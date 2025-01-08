@@ -4,7 +4,7 @@
             src="//d1qywhc7l90rsa.cloudfront.net/sites/26075/banner/YHS_Banner.png" aria-hidden="true" tabindex="-1">
     </a>
 </div>
-<nav class="overhaul navbar navbar-expand-lg navbar-light bg-light">
+<nav class="overhaul navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="/home">
         <img class="navbar-brand-logo"
             src="https://d1qywhc7l90rsa.cloudfront.net/accounts/165281/images/YHS-Rose-Lock-Up-Square-Full-Colour-RGB.png"
@@ -22,48 +22,47 @@
             <li class="nav-item">
                 <a class="nav-link" href="/home">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/az.php">Our Collection</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Resources
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://yorkhouse.follettdestiny.ca/common/welcome.jsp?site=100">Catalogue</a>
+                    <a class="dropdown-item" href="/az.php">Databases</a>
+                    <a class="dropdown-item" style="display: none;" href="#">Volunteer's Spotlight</a>
+                </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Guides</a>
+                <a class="nav-link" href="/guides">Guides</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Assignments</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Clubs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">About Us</a>
+                <a class="nav-link" href="/assignments">Assignments</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Clubs
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/clubs">All Clubs</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="/tutoring">Tutoring</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About Us</a>
+            </li>
         </ul>
-        <div id="s-lg-guide-header-search">
-            <div id="s-lg-guide-search-box">
-                <form class="form-inline my-2 my-lg-0" role="search" id="s-lg-guide-search-form"
-                    action="https://yorkhouse.libguides.com/srch.php" method="GET">
-                    <div class="input-group input-group-sm">
-                        <input type="text" id="s-lg-guide-search-terms" name="q" class="form-control mr-sm-2"
-                            maxlength="260" placeholder="Enter Search Words">
-                        <label class="sr-only" for="s-lg-guide-search-terms">Enter Search Words</label>
-                        <span class="input-group-btn">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </span>
-                    </div>
-                </form>
+        <form class="form-inline my-2 my-lg-0" role="search" id="s-lg-guide-search-form"
+            action="https://yorkhouse.libguides.com/srch.php" method="GET">
+            <div class="input-group input-group-sm">
+                <input type="text" id="s-lg-guide-search-terms" name="q" class="form-control mr-sm-2 my-2"
+                    maxlength="260" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </span>
             </div>
-        </div>
+        </form>
     </div>
 </nav>
