@@ -1,52 +1,99 @@
 <body class="s-lg-guide-body">
+
+    <!-- Custom Bootstrap, move to head when deploying. Interferes with guide editor, disable when changing. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <style>
+        /* 
+      Load the overhaul project on this alt guide page only.
+      Note that this style block should be moved to the head.html override once the overhaul is deployed to the public.
+      */
+        .overhaul {
+            display: block;
+        }
+
+        #s-lib-banner {
+            display: none;
+        }
+
+        /* BOOTSTRAP NAVBAR */
+        /* Place logo & text side by side */
+        .navbar-brand {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        /* Scale Brand Logo */
+        .navbar-brand-logo {
+            height: 4rem;
+        }
+
+        /* Style Brand Text */
+        .navbar-brand-caption {
+            text-wrap: wrap;
+            font-size: .8rem;
+            text-transform: uppercase;
+        }
+
+        /* Hide default search bar */
+        .pull-right>#s-lg-guide-header-search {
+            display: none;
+        }
+    </style>
     {{skip_link}}
     {{ADMIN_CMD_BAR}}
+    <!-- BEGIN: Page Header -->
     {{public_header}}
+    <!-- END: Page Header -->
+    <!-- BEGIN: Guide Info Header -->
     <div id="s-lg-guide-header" class="container s-lib-header s-lib-side-borders">
         <nav id="s-lib-bc" aria-label="breadcrumb">
             {{breadcrumbs}}
         </nav>
         <div class="pull-right">
             <div id="s-lg-guide-header-search">
-                {{guide_search}}        </div>
+                {{guide_search}} </div>
             {{ADMIN_MINI_CMD_BAR}}
         </div>
         <div id="s-lg-guide-header-info">
-            <h1 id="s-lg-guide-name">{{guide_title}}</h1>
+            <h1 id="s-lg-guide-name">{{guide_title}}: {{page_title}}</h1>
             <div id="s-lg-guide-desc-container">
                 <span id="s-lg-guide-description">{{guide_description}}</span>
             </div>
         </div>
     </div>
-    <div id="s-lg-guide-tabs-title-bar" class="container s-lib-side-borders"></div>
-    <div id="s-lg-side-nav-content" class="container s-lib-side-borders pad-top-med">
-        <div class="row">
-            <div class="col-md-3 s-lg-tabs-side pad-bottom-med">
-                <div id="s-lg-tabs-container">
-                    <div id="s-lg-guide-tabs" role="navigation" aria-label="Guide Pages">
-                        <ul class="nav nav-pills nav-stacked split-button-nav">
-                            {{guide_nav}}
-                        </ul>
-                        {{side_nav_boxes}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="s-lg-tab-content">
-                    <div id="s-lg-guide-main" class="tab-pane active" tabindex="-1">
-                        {{content}}
-                    </div>
-                </div>
-                {{page_prev_next_links}}
-            </div>
+    <!-- END: Guide Info Header -->
+    <div id="s-lg-tabs-container" class="container s-lib-side-borders pad-top-med">
+        <div id="s-lg-guide-tabs" class="tabs" role="navigation" aria-label="Guide Pages">
+            <ul class="nav nav-tabs split-button-nav">
+                {{guide_nav}}
+            </ul>
         </div>
     </div>
-    <div id="s-lib-footer-public"
-         class="s-lib-footer footer container s-lib-side-borders">
+    <div id="s-lg-guide-tabs-title-bar" class="container s-lib-side-borders"></div>
+    <!-- BEGIN: Guide Content -->
+    <div id="s-lg-guide-main" class="container s-lib-main s-lib-side-borders" tabindex="-1">
+        {{empty_page_sub_page_list}}
+        {{content}}
+        {{page_prev_next_links}}
+    </div>
+    <!-- END: Guide Content -->
+    <!-- BEGIN: Page Footer -->
+    <div id="s-lib-footer-public" class="s-lib-footer footer container s-lib-side-borders">
         <div id="s-lg-guide-header-meta" class="pad-top-sm pad-left-med clearfix">
             <ul id="s-lg-guide-header-attributes" class="">
                 <li id="s-lg-guide-header-updated" class="s-lg-h-separator">
-                    {{last_updated_display}}            </li>
+                    {{last_updated_display}} </li>
                 <li id="s-lg-guide-header-url" class="s-lg-h-separator">
                     {{guide_url_display}}
                 </li>
@@ -55,11 +102,11 @@
                 </li>
             </ul>
             <div id="s-lib-footer-login-link" class="pull-right pad-right-med">
-                {{login_url_display}}        </div>
+                {{login_url_display}} </div>
         </div>
         <div class="pad-bottom-sm clearfix">
             <div id="s-lib-footer-support-link" class="pull-right pad-right-med">
-                        </div>
+                {{support_url_display}} </div>
             <div id="s-lg-guide-header-subjects" class="pad-top-sm pad-left-med pad-right-med pull-left">
                 {{guide_subjects}}
             </div>
@@ -68,10 +115,10 @@
             </div>
         </div>
     </div>
+    <!-- END: Page Footer -->
     <!-- scroll_top.twig -->
     <div id="s-lib-scroll-top">
-        <a href="javascript:void(0);" onclick="jQuery('body').focus();" title="Back to Top"
-           aria-label="Back to Top">
+        <a href="javascript:void(0);" onclick="jQuery('body').focus();" title="Back to Top" aria-label="Back to Top">
             <span class="fa-stack fa-lg" aria-hidden="true">
                 <i class="fa fa-square-o fa-stack-2x"></i>
                 <i class="fa fa-angle-double-up fa-stack-1x" style="position:relative; bottom:2px;"></i>
@@ -79,6 +126,10 @@
         </a>
     </div>
     <!-- !scroll_top.twig -->
-    <div id="s-lib-alert" title=""><div id="s-lib-alert-content"></div></div>{{public_footer}}
-    </body>
-    
+    <div id="s-lib-alert" title="">
+        <div id="s-lib-alert-content"></div>
+    </div>
+    <!-- BEGIN: Custom Footer -->
+    {{public_footer}}
+    <!-- END: Custom Footer -->
+</body>
