@@ -1,21 +1,89 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
-/* Any html inside an overhaul class is hidden by default. This lets us develop & test on the alternate guide without disturbing the development environment. */
-.overhaul { 
-  display: none !important;
-}
+  body>div .caret {
+    display: none; /* Fix duplicated dropdown arrows. */
+  }
+  
+  .fixed-top { /* remove fixed nav in editor, as it covers body when bootstrap is loaded. */
+    position: relative;
+  }
 
-/* CUSTOM TWEAKS*/
-/* Scale down profile image - Phillip's request */
-  .s-lib-profile-image>img {width:25%;}
+  .navbar {
+    font-size: 1.5rem;
+    justify-content: space-between;
 
-/* Remove tiny box title - Phillip's request */
+    /* Stop dropdown arrows and buttons from wrapping */
+    white-space: nowrap;
+  }
+
+  /* Fix conflicts between Bootstrap & LibGuides */
+  .navbar-collapse,
+  body,
+  .navbar-brand {
+    padding: 0;
+  }
+
+  .navbar-nav {
+    padding: 0 1rem;
+    margin: 0;
+  }
+
+  .navbar::before,
+  .navbar::after {
+    /* Remove the ::before element that's breaking justify-content: space-between; */
+    display: none;
+  }
+
+  .navbar .input-group-btn {
+    width: auto;
+  }
+
+  .navbar-brand {
+    /* Place logo & text side by side */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .navbar-brand-logo {
+    /* Scale Brand Logo */
+    height: 4rem;
+  }
+
+  .navbar-brand-caption {
+    /* Style Brand Text */
+    text-wrap: wrap;
+    font-size: .8rem;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  /* Hide default search bar */
+  .pull-right>#s-lg-guide-header-search {
+    display: none;
+  }
+
+  /* Any html inside an overhaul class is hidden by default. This lets us develop & test on the alternate guide without disturbing the development environment. */
+  .overhaul {
+    display: none !important;
+  }
+
+  /* CUSTOM TWEAKS*/
+  /* Scale down profile image - Phillip's request */
+  .s-lib-profile-image>img {
+    width: 25%;
+  }
+
+  /* Remove tiny box title - Phillip's request */
   .s-lib-box-title {
     padding: 0px !important;
     font-size: 0px !important;
   }
 
-/* Reformat google embeds to display properly. */
-.s-lg-widget>iframe {
+  /* Reformat google embeds to display properly. */
+  .s-lg-widget>iframe {
     margin: auto !important;
     display: block !important;
   }
