@@ -8,6 +8,7 @@
 	    - Assign subjects
 	- Make custom login guides for each resource
 	- add reading lists & request a title to database?
+- Fix this broken page: https://yorkhouse.libguides.com/sb.php
 - Styling Ideas
 	- afix nav to top of screen
 	- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
