@@ -2,18 +2,17 @@
  This a customization project for York House School's Senior Learning Commons LibGuides 2 website.
 
 # To Do...
-- afix nav to top of screen
-- make form select inputs trigger on choice selection
-- Break collab. hub into separate assignment pages
-    - use course guide as type
-    - Assign subjects
-- Make custom login guides for each resource
-- add reading lists & request a title to database?
-- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
-- Set up top level nav pages
-    - use subject pages?
-- Use subjects to list all guides of a specific type.
-
+- content - For Kaleb to focus on
+	- Break collab. hub into separate assignment pages
+	    - use course guide as type
+	    - Assign subjects
+	- Make custom login guides for each resource
+	- add reading lists & request a title to database?
+- Styling Ideas
+	- afix nav to top of screen
+	- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
+	- Apply brand colours to site
+- Setup safe dev environment
 # LibGuide Limitations
 - Don't have a way to upload custom fonts - need to use [google hosted fonts](https://fonts.google.com/).
 - Can upload custom images
