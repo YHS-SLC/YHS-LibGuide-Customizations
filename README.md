@@ -2,17 +2,6 @@
  This a customization project for York House School's Senior Learning Commons LibGuides 2 website.
 
 # To Do...
-- Fix A-Z, Search & Subject
-    - Crack open Default bundle & extract supports
-	    - [x] Global issue of class "hide" not hiding things
-	    - [ ] a-z
-		    - [x] Issue from using navbar for filters
-			    - [x] jQuery select and remove the classes?
-		    - [x] Issue with btn-group class not wrapping inside container for A to Z list
-		    - [ ] Issue with featured tag not formatted as tag
-		- [ ] 
-    - reformat subject pages to not be tabbed.
-        - instead have sections with heading links on left hand side
 - afix nav to top of screen
 - Break collab. hub into separate assignment pages
     - use course guide as type
