@@ -6,41 +6,10 @@ LibGuides Custom Bootstrap:
 <link rel="stylesheet" href="https://static-assets-ca.libguides.com/web/css3.14.3/lg-public.min.css">
 -->
 <style>
-  body>div .caret {
-    display: none; /* Fix duplicated dropdown arrows. */
-  }
-  
-  .fixed-top { /* remove fixed nav in editor, as it covers body when bootstrap is loaded. */
-    position: relative;
-  }
-
-  .navbar {
-    justify-content: space-between;
-
-    /* Stop dropdown arrows and buttons from wrapping */
-    white-space: nowrap;
-  }
-
-  /* Fix conflicts between Bootstrap & LibGuides */
   .navbar-collapse,
   body,
-  .navbar-brand {
+  .navbar-brand { /* Remove default LibGuides padding */
     padding: 0;
-  }
-
-  .navbar-nav {
-    padding: 0 1rem;
-    margin: 0;
-  }
-
-  .navbar::before,
-  .navbar::after {
-    /* Remove the ::before element that's breaking justify-content: space-between; */
-    display: none;
-  }
-
-  .navbar .input-group-btn {
-    width: auto;
   }
 
   .navbar-brand {
@@ -59,9 +28,10 @@ LibGuides Custom Bootstrap:
   .navbar-brand-caption {
     /* Style Brand Text */
     text-wrap: wrap;
-    font-size: .8rem;
+    font-size: .7rem;
+    line-height: .7rem;
+    font-weight: bold;
     text-transform: uppercase;
-    line-height: 1rem;
   }
 
   /* Hide default search bar */
