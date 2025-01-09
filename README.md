@@ -3,9 +3,6 @@
 
 # To Do...
 - content - For Kaleb to focus on
-	- Break collab. hub into separate assignment pages
-	    - use course guide as type
-	    - Assign subjects
 	- Make custom login guides for each resource
 	- add reading lists & request a title to database?
 - Fix this broken page: https://yorkhouse.libguides.com/sb.php
