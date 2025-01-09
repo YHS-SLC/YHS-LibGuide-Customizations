@@ -1,13 +1,4 @@
 <body class="s-lg-guide-body">
-    <style>
-        /* 
-            Load the overhaul project on this alt guide page only.
-            Move any style out of this block to site-wide head.html when it is pushed to production.
-            */
-        .overhaul {
-            display: flex;
-        }
-    </style>
     {{skip_link}}
     {{ADMIN_CMD_BAR}}
     <!-- BEGIN: Page Header -->
@@ -18,11 +9,6 @@
         <nav id="s-lib-bc" aria-label="breadcrumb">
             {{breadcrumbs}}
         </nav>
-        <div class="pull-right">
-            <div id="s-lg-guide-header-search">
-                {{guide_search}} </div>
-            {{ADMIN_MINI_CMD_BAR}}
-        </div>
         <div id="s-lg-guide-header-info">
             <h1 id="s-lg-guide-name">{{guide_title}}: {{page_title}}</h1>
             <div id="s-lg-guide-desc-container">

@@ -125,13 +125,19 @@ LibGuides Custom Bootstrap:
   }
   /* END: Include dependencies from default LibGuide bundle */
 
-
+  /* BEGIN: Styling Fixes */
+  select.form-control { /* Fix form select inputs */
+    padding: .5rem .75rem 2rem .75rem
+  }
+  
   .navbar-collapse,
   body,
   .navbar-brand { /* Remove default LibGuides padding */
     padding: 0;
   }
+  /* END: Styling Fixes */
 
+  /* BEGIN: Custom Tweaks */
   .navbar-brand {
     /* Place logo & text side by side */
     display: flex;
@@ -154,17 +160,6 @@ LibGuides Custom Bootstrap:
     text-transform: uppercase;
   }
 
-  /* Hide default search bar */
-  .pull-right>#s-lg-guide-header-search {
-    display: none;
-  }
-
-  /* Any html inside an overhaul class is hidden by default. This lets us develop & test on the alternate guide without disturbing the development environment. */
-  .overhaul {
-    display: none !important;
-  }
-
-  /* CUSTOM TWEAKS*/
   /* Scale down profile image - Phillip's request */
   .s-lib-profile-image>img {
     width: 25%;
@@ -180,6 +175,7 @@ LibGuides Custom Bootstrap:
     margin: auto !important;
     display: block !important;
   }
+  /* END: Custom Tweaks*/
 </style>
 <script>
 </script>

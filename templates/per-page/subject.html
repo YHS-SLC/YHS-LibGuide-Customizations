@@ -1,7 +1,4 @@
 <body class="s-lib-public-body">
-    <!-- BEGIN: Default LibGuide Bootstrap -->
-    <link rel="stylesheet" href="https://static-assets-ca.libguides.com/web/css3.14.3/lg-public.min.css">
-    <!-- END: Default LibGuide Bootstrap -->
     {{skip_link}}
     <!-- BEGIN: Page Header -->
     {{public_header}}
@@ -41,8 +38,7 @@
                                     Guides
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                data-bs-parent="#accordionExample">
+                            <div id="collapseOne" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
                                     <div id="s-lg-sb-guides">
                                         <div id="s-lg-sb-content-guides"></div>
@@ -52,13 +48,12 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Databases
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
+                            <div id="collapseTwo" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
                                     <div id="s-lg-sb-databases">
                                         <div id="s-lg-sb-content-databases"></div>
@@ -68,13 +63,12 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     Blog Posts
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
+                            <div id="collapseThree" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
                                     <div id="s-lg-sb-blog-posts">
                                         <div id="s-lg-sb-content-blog-posts"></div>
@@ -134,6 +128,13 @@
         // Remove bootstrap navbar styling from generated filter element
         jQuery('#sb-search-col-1 .navbar-header:first').remove();
         jQuery('#sb-search-col-1 nav:first').removeClass();
-        jQuery('#s-lg-sb-nav-1').removeClass(); 
+        jQuery('#s-lg-sb-nav-1').removeClass();
+        // Move Go Button logic to on select using: https://stackoverflow.com/a/12404521
+        jQuery('#s-lg-sb-nav-1 #sel-guide-drop').on("change", function (event) {
+            window.location.href = '/' + (jQuery('#sel-guide-drop').val().replace(/^\/+/, ''));
+        });
+        jQuery('#s-lg-sb-nav-1 #sel-guide-drop').on("focus", function (event) {
+            this.selectedIndex = -1;
+        });
     </script>
 </body>

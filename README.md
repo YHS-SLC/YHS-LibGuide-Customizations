@@ -3,6 +3,7 @@
 
 # To Do...
 - afix nav to top of screen
+- make form select inputs trigger on choice selection
 - Break collab. hub into separate assignment pages
     - use course guide as type
     - Assign subjects
