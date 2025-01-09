@@ -75,4 +75,17 @@
     {{public_footer}}
     <!-- END: Custom Footer -->
 
+    <script>
+        // Remove bootstrap navbar styling from generated filter element
+        jQuery('#sb-search-col-1 .navbar-header:first').remove();
+        jQuery('#sb-search-col-1 nav:first').removeClass();
+        jQuery('#s-lg-sb-nav-1').removeClass();
+        // Move Go Button logic to on select using: https://stackoverflow.com/a/12404521
+        jQuery('#s-lg-sb-nav-1 #sel-guide-drop').on("change", function (event) {
+            window.location.href = '/' + (jQuery('#sel-guide-drop').val().replace(/^\/+/, ''));
+        });
+        jQuery('#s-lg-sb-nav-1 #sel-guide-drop').on("focus", function (event) {
+            this.selectedIndex = -1;
+        });
+    </script>
 </body>
