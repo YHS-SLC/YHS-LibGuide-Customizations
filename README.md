@@ -3,7 +3,14 @@
 
 # To Do...
 - Fix A-Z, Search & Subject
-    - Crack open Default bundle & extract  supports
+    - Crack open Default bundle & extract supports
+	    - [x] Global issue of class "hide" not hiding things
+	    - [ ] a-z
+		    - [x] Issue from using navbar for filters
+			    - [x] jQuery select and remove the classes?
+		    - [x] Issue with btn-group class not wrapping inside container for A to Z list
+		    - [ ] Issue with featured tag not formatted as tag
+		- [ ] 
     - reformat subject pages to not be tabbed.
         - instead have sections with heading links on left hand side
 - afix nav to top of screen
@@ -31,6 +38,7 @@
     - LibGuides will come with a number of default css configurations we can't easily remove without breaking searching/subject view things.
 # Design Notes
 - [Our Figma Project](https://www.figma.com/design/sTxIk3kZhqVAVE7eAGqGH3/SLC?node-id=1-9384&t=Tm2fjONQBzFeh19G-0)
+- https://library.rrc.ca/home
 - [Wentworth Institute of Technology Libguides](https://library.wit.edu/home)
     - [Their Github Project Page](https://github.com/Adam-Shire-WIT/libguides2-customizations?tab=readme-ov-file)
 - [[LibGuides ABC.xlsx]] - From Aviva

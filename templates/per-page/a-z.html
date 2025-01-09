@@ -1,7 +1,4 @@
 <body class="s-lib-public-body">
-    <!-- BEGIN: Default LibGuide Bootstrap -->
-    <link rel="stylesheet" href="https://static-assets-ca.libguides.com/web/css3.14.3/lg-public.min.css">
-    <!-- END: Default LibGuide Bootstrap -->
     {{skip_link}}
     <!-- BEGIN: Page Header -->
     {{public_header}}
@@ -86,5 +83,9 @@
     <!-- BEGIN: Custom Footer -->
     {{public_footer}}
     <!-- END: Custom Footer -->
+<script>
+    // Remove bootstrap navbar styling from filter element
+jQuery('#az-search-col-1 nav:first').removeClass(); 
+jQuery('#s-lg-az-nav-1').removeClass(); 
+</script>
     </body>
-    
