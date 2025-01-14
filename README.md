@@ -45,6 +45,12 @@
 - [Wentworth Institute of Technology Libguides](https://library.wit.edu/home)
     - [Their Github Project Page](https://github.com/Adam-Shire-WIT/libguides2-customizations?tab=readme-ov-file)
 - [[LibGuides ABC.xlsx]] - From Aviva
+- The website depends on several google drive files, as a way to protect PII behind a google login. They are all in [this folder in Kaleb's drive](https://drive.google.com/drive/folders/1udwNokphi7hSrDBAW7WRa8ySkBLZvj1Y)
+	- Book Request - Form & Spreadsheet
+	- Book Review - Form & Spreadsheet
+	- Contact Us - Form & Spreadsheet
+	- Database Links/Logins - Multi-slide Presentation
+	- Featuring Angela - 1 slide Presentation
 - Use case Ideas
     - Booking rooms
     - Mention what you can book on library catalogue page
