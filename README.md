@@ -1,5 +1,10 @@
 # YHS-LibGuide-Customizations
  This a customization project for York House School's Senior Learning Commons LibGuides 2 website.
+
+- `/overrides` contains the actual code affecting the website.
+- `/SLC - Archive for Live Server` is an archive of the website from Jan 14, 2025. It is used to provide a *somewhat functional* live server for development. Note that the archive cannot record dynamic content, such as our "All Databases" page.
+- `YHS_database_list` .csv & .numbers files are for updating our list of databases
+
 # To Do...
 - Setup safe dev environment
 - Styling Ideas
@@ -28,6 +33,7 @@
 		- internal guide nav menu on left side
 
 # LibGuide Limitations
+- We are developing overrides for existing LibGuides conventions, and do not have the entire codebase to host in a live server. To combat this, an archive of the website was made using HTTrack. 
 - Don't have a way to upload custom fonts - need to use [google hosted fonts](https://fonts.google.com/).
 - Can upload custom images
 - Can edit individual HTML templates for:

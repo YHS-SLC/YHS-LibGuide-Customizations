@@ -1,0 +1,28 @@
+HTTrack3.49-2 launched on Tue, 14 Jan 2025 15:29:23 at https://yorkhouse.libguides.com/
+(winhttrack https://yorkhouse.libguides.com/ -W -O "/Users/kafseth/websites/SLC" -%v )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+15:29:26	Warning: 	Found for https://yorkhouse.libguides.com/
+15:29:26	Warning: 	File has moved from https://yorkhouse.libguides.com/ to /home
+15:31:00	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/research-sources (from https://yorkhouse.libguides.com/home)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138925 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138916 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138907 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138905 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138924 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138915 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138779 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138906 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138901 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138908 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:17	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/assignments/sb.php?subject_id=138909 (from https://yorkhouse.libguides.com/assignments/this-year)
+15:31:35	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/3d-printing/custom (from https://yorkhouse.libguides.com/how-to/3d-printing/token)
+15:31:35	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/3d-printing/premade (from https://yorkhouse.libguides.com/how-to/3d-printing/token)
+15:31:35	Error: 	"Not Found" (404) at link https://yorkhouse.libguides.com/3d-printing/token (from https://yorkhouse.libguides.com/how-to/3d-printing/custom)
+
+HTTrack Website Copier/3.49-2 mirror complete in 2 minutes 14 seconds : 110 links scanned, 93 files written (39839135 bytes overall) [37327197 bytes received at 278561 bytes/sec], 3280580 bytes transferred using HTTP compression in 107 files, ratio 21%, 21.8 requests per connection
+(15 errors, 2 warnings, 0 messages)
