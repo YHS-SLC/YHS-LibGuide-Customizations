@@ -7,6 +7,26 @@
 	- afix nav to top of screen
 	- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
 	- Apply brand colours to site
+- Content Ideas
+	- Write a friendly intro in the custom template for 
+		- A-Z databases
+		- Subject & Subject Landing pages
+	- 
+- Figma implementation
+	- Site-wide
+		- Style using brand colours
+		- navigation bar announcement ribbon
+		- Footer
+		- sidebar boxes
+			- Hours & map
+			- Contact us using google form embed
+			- toggle visiblity button (visible by default on desktop, hidden by default on mobile)
+	- Home page
+		- Image hero
+		- New post carousel (manually populated?)
+	- Guide Page
+		- internal guide nav menu on left side
+
 # LibGuide Limitations
 - Don't have a way to upload custom fonts - need to use [google hosted fonts](https://fonts.google.com/).
 - Can upload custom images
