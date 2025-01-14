@@ -1,16 +1,12 @@
 # YHS-LibGuide-Customizations
  This a customization project for York House School's Senior Learning Commons LibGuides 2 website.
-
 # To Do...
-- content - For Kaleb to focus on
-	- Make custom login guides for each resource
-	- add reading lists & request a title to database?
-- Fix this broken page: https://yorkhouse.libguides.com/sb.php
+- Setup safe dev environment
 - Styling Ideas
+	- Would be nice to move the guide subject list to top of page, for visibility
 	- afix nav to top of screen
 	- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
 	- Apply brand colours to site
-- Setup safe dev environment
 # LibGuide Limitations
 - Don't have a way to upload custom fonts - need to use [google hosted fonts](https://fonts.google.com/).
 - Can upload custom images
