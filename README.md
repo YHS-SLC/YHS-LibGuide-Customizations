@@ -16,6 +16,7 @@
 	- Write a friendly intro in the custom template for 
 		- A-Z databases
 		- Subject & Subject Landing pages
+	- Courses? https://library.rrc.ca/LEARN_modules
 	- 
 - Figma implementation
 	- Site-wide
@@ -29,6 +30,14 @@
 	- Home page
 		- Image hero
 		- New post carousel (manually populated?)
+		- Iconography for common questions
+			- Printing Help
+			- FAQ
+			- Citing
+			- Book a Tutor
+			- Book a Room
+			- Upcoming Events - feature calendar?
+		- Feature new library materials - Books, magazines, etc
 	- Guide Page
 		- internal guide nav menu on left side
 
