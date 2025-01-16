@@ -6,12 +6,12 @@
 - `YHS_database_list` .csv & .numbers files are for updating our list of databases
 
 # To Do...
-- Setup safe dev environment
 - Styling Ideas
 	- Would be nice to move the guide subject list to top of page, for visibility
 	- afix nav to top of screen
 	- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
 	- Apply brand colours to site
+	- Could use JS script to check subject in subject list, and add specific content to the list page?
 - Content Ideas
 	- Write a friendly intro in the custom template for 
 		- A-Z databases
