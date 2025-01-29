@@ -6,18 +6,33 @@
 - `YHS_database_list` .csv & .numbers files are for updating our list of databases
 
 # To Do...
+- Fix the broken dropdown menus on individual guides
 - Styling Ideas
 	- Would be nice to move the guide subject list to top of page, for visibility
 	- afix nav to top of screen
 	- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
 	- Apply brand colours to site
 	- Could use JS script to check subject in subject list, and add specific content to the list page?
-- Content Ideas
+	- Homepage
+		- big rotating hero for any upcoming events
+		- Breaking new arrivals into format & fiction/non-fiction
+	- place additional search bar into footer
+- Content Ideas (Kaleb)
 	- Write a friendly intro in the custom template for 
 		- A-Z databases
 		- Subject & Subject Landing pages
 	- Courses? https://library.rrc.ca/LEARN_modules
-	- 
+	- Assign subjects to databases
+	- add ILL option to our resources
+	- add to databases
+		- google scholar
+		- wikipedia
+		- snopes
+		- internet archive
+		- Standard E-Books (well formatted e-books of open source books, and older books with expired copyright) https://standardebooks.org/ebooks?query=frankenstein&sort=newest&view=grid&per-page=12
+		- World in data https://ourworldindata.org/
+		- Open Research Library - global multi-discipline journal https://openresearchlibrary.org/home
+		- Cambridge University Press, Open Access https://www.cambridge.org/core/publications/open-access
 - Figma implementation
 	- Site-wide
 		- Style using brand colours
@@ -60,6 +75,7 @@
 - [Wentworth Institute of Technology Libguides](https://library.wit.edu/home)
     - [Their Github Project Page](https://github.com/Adam-Shire-WIT/libguides2-customizations?tab=readme-ov-file)
 - [[LibGuides ABC.xlsx]] - From Aviva
+- brooklyn public library case study https://medium.com/design-bootcamp/restructuring-the-brooklyn-public-librarys-information-architecture-c9675a313ff1
 - The website depends on several google drive files, as a way to protect PII behind a google login. They are all in [this folder in Kaleb's drive](https://drive.google.com/drive/folders/1udwNokphi7hSrDBAW7WRa8ySkBLZvj1Y)
 	- Book Request - Form & Spreadsheet
 	- Book Review - Form & Spreadsheet
