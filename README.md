@@ -17,6 +17,9 @@
 		- big rotating hero for any upcoming events
 		- Breaking new arrivals into format & fiction/non-fiction
 	- place additional search bar into footer
+	- Use Tailwind (David is more familiar with it)
+		- Use Pines UI: A tailwind ui library that also integrates Alpine JS for more functionality.
+		- Need to watch for incompatability between Tailwind, Alpine JS, and existing LibGuides bootstrap. See breaking issues in https://yorkhouse.libguides.com/dev (which is the only page that uses guide-alt.html) 
 - Content Ideas (Kaleb)
 	- Write a friendly intro in the custom template for 
 		- A-Z databases
