@@ -5,9 +5,6 @@
     <!-- END: Page Header -->
     <!-- BEGIN: Content Header -->
     <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
-        <nav id="s-lib-bc" aria-label="breadcrumb">
-            {{breadcrumbs}}
-        </nav>
         <h1 id="s-lib-public-header-title">{{page_title}}</h1>
         <div id="s-lib-public-header-desc">{{page_description}}</div>
     </div>
@@ -19,14 +16,6 @@
     <!-- END: Nav Bar -->
     <!-- BEGIN: content -->
     <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-        <section aria-label="Subject Search Bar">
-            <div id="s-lg-sb-search-bar" class="row">
-                <div id="sb-search-col-1" class="col-md-12 center">
-                    {{navbar}}
-                </div>
-            </div>
-        </section>
-
         <section aria-label="Content by Subject">
             <div id="s-lg-sb-cols" class="row">
                 <div id="col1" class="col-md-8 center">
@@ -40,9 +29,7 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    <div id="s-lg-sb-guides">
-                                        <div id="s-lg-sb-content-guides"></div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -55,9 +42,7 @@
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    <div id="s-lg-sb-databases">
-                                        <div id="s-lg-sb-content-databases"></div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -70,30 +55,36 @@
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    <div id="s-lg-sb-blog-posts">
-                                        <div id="s-lg-sb-content-blog-posts"></div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div id="col2" class="col-md-4 center">
-                    <div style="padding-top: 9px;"></div>
-                    {{content_box_search}}
-                    {{content_box_experts}}
-                </div>
             </div>
         </section>
+        <div id="s-lg-sb-guides">
+            <div id="s-lg-sb-content-guides"></div>
+        </div>
+        <div id="s-lg-sb-databases">
+            <div id="s-lg-sb-content-databases"></div>
+        </div>
+        <div id="s-lg-sb-blog-posts">
+            <div id="s-lg-sb-content-blog-posts"></div>
+        </div>
     </div>
     <!-- END: content -->
-    <!-- BEGIN: Page Footer -->
-    {{system_footer}}
-    <!-- END: Page Footer -->
+    <div id="page-footer">
+        <div id="default-page-footer">
+            {{system_footer}}
+        </div>
+        {{public_footer}}
+    </div>
+
     <div id="s-lib-alert" title="">
         <div id="s-lib-alert-content"></div>
-    </div><!-- popover.twig -->
+    </div>
+    <!-- popover.twig -->
     <div id="s-lib-popover-title" class="hide">
         <span class="text-info">
             <strong>title</strong>
@@ -103,7 +94,6 @@
             &times;
         </button>
     </div>
-
     <div id="s-lib-popover-content" class="hide">
         <i class="fa fa-refresh fa-spin"></i> Loading...
         <button class="btn btn-default btn-sm popclose" type="button">Close</button>
@@ -119,22 +109,4 @@
         </a>
     </div>
     <!-- !scroll_top.twig -->
-
-    <!-- BEGIN: Custom Footer -->
-    {{public_footer}}
-    <!-- END: Custom Footer -->
-
-    <script>
-        // Remove bootstrap navbar styling from generated filter element
-        jQuery('#sb-search-col-1 .navbar-header:first').remove();
-        jQuery('#sb-search-col-1 nav:first').removeClass();
-        jQuery('#s-lg-sb-nav-1').removeClass();
-        // Move Go Button logic to on select using: https://stackoverflow.com/a/12404521
-        jQuery('#s-lg-sb-nav-1 #sel-guide-drop').on("change", function (event) {
-            window.location.href = '/' + (jQuery('#sel-guide-drop').val().replace(/^\/+/, ''));
-        });
-        jQuery('#s-lg-sb-nav-1 #sel-guide-drop').on("focus", function (event) {
-            this.selectedIndex = -1;
-        });
-    </script>
 </body>
