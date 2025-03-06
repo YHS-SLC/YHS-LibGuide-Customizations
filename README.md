@@ -20,6 +20,7 @@
 	- Use Tailwind (David is more familiar with it)
 		- Use Pines UI: A tailwind ui library that also integrates Alpine JS for more functionality.
 		- Need to watch for incompatability between Tailwind, Alpine JS, and existing LibGuides bootstrap. See breaking issues in https://yorkhouse.libguides.com/dev (which is the only page that uses guide-alt.html) 
+		- Can't really use tailwind for LibGuide `{{Template_Value}}` content. need to be able to assign styles through parent container. Can use tailwind for new stand-alone components: Nav, Footer, Sidebar elements
 - Content Ideas (Kaleb)
 	- Write a friendly intro in the custom template for 
 		- A-Z databases
