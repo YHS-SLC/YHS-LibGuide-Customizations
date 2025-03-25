@@ -197,8 +197,10 @@ LibGuides Custom Bootstrap:
   }
   
   /* Stop horizontal scrolling to whitespace on Chrome */
-  body { 
-    overflow-x: hidden;
+  /* Chrome 29+ */
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+    and (min-resolution:.001dpcm) {
+      body{overflow-x: hidden;} 
   }
   /* END: Custom Tweaks*/
 
