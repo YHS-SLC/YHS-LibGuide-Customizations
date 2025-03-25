@@ -57,7 +57,7 @@
                             return;
                         }
                         else if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0
-                    }, 100)
+                    }, 20)
                 })(10);                   //  pass the number of iterations as an argument
                 function getCards(selector, buttonText, outputQuery) {
                     // 1. jQuery grabs featured list elements.
@@ -91,7 +91,6 @@
                                 imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/)/g, "_").replace(/\"/g, "") + ".jpg"
                                 image = `<img class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
                                 title = "<h3 class='carousel-card-title'>" + titleList[index].substring(1) + "</h2>"
-                                console.log(title, " ", imageSource);
                                 noNewlines = response.responseText.replace(/(?:\\n)/g, '');
                                 fixElements = noNewlines.replace(/(?:\\\/)/g, '/');
                                 fixLinks = fixElements.replace(/(?:\\\"\/|\\\")/g, '');

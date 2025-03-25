@@ -58,7 +58,12 @@
         </div>
         {{public_footer}}
     </div>
-
+    <script>  // Remove special char prefix from title display
+        var title = jQuery('#s-lg-guide-name').text()
+        if (title.charAt(0) == "*" || title.charAt(0) == "!") {
+            jQuery('#s-lg-guide-name').text(title.substring(1));
+        }
+    </script>
     <!-- Below this point is default LibGuides Alerts.-->
     <div id="s-lib-alert" title="">
         <div id="s-lib-alert-content"></div>
