@@ -70,28 +70,29 @@
                         return false;
                     }
 
-                    var maxFeatured = 1000;
-
                     // 2. Extract links from them.
-                    var titleList = []
-                    output.find('a').slice(0, maxFeatured).each(function () {
-                        titleList.push($(this).text().replace(/(\r\n|\n|\r)/gm, "").replace(/\s+/g, ' '))
+                    var titleList = Array(output.length)
+                    output.find('a').each(function (i, value) {
+                        titleList[i] = $(this).text().replace(/(\r\n|\n|\r)/gm, "").replace(/\s+/g, ' ');
                     });
                     // 3. Extract php requests from them.
-                    var phpList = []
-                    output.find('button').slice(0, maxFeatured).each(function () {
-                        phpList.push($(this).attr('data-ajload'))
+                    var phpList = Array(titleList.length)
+                    output.find('button').each(function (i, value) {
+                        phpList[i] = $(this).attr('data-ajload');
                     });
 
                     // 4. Process php response as html.
-                    for (let index = 0; index < titleList.length; index++) {
-                        $.ajax({
-                            url: phpList[index],
-                            complete: function (response) {
+                    var html = Array(phpList.length);
+                    var allAJAX = phpList.map((link, index) => {
+                        return $.ajax({
+                            type: "GET",
+                            url: link,
+                            async: true,
+                            success: function (response) {
                                 imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/)/g, "_").replace(/\"/g, "") + ".jpg"
                                 image = `<img class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
                                 title = "<h3 class='carousel-card-title'>" + titleList[index].substring(1) + "</h2>"
-                                noNewlines = response.responseText.replace(/(?:\\n)/g, '');
+                                noNewlines = response.replace(/(?:\\n)/g, '');
                                 fixElements = noNewlines.replace(/(?:\\\/)/g, '/');
                                 fixLinks = fixElements.replace(/(?:\\\"\/|\\\")/g, '');
                                 cutStyle = fixLinks.replace(/(?:style=.*?;>)/g, '>');
@@ -99,15 +100,17 @@
                                     cutStyle.indexOf("-->") + 3,
                                     cutStyle.lastIndexOf("<span>")
                                 );
-                                forceNewWindow = cutHeader.replace(/window\.location\.href='(.*)'/g,"window.open('$1','_blank')").replace(/<a/g, "<a target=_blank")
+                                forceNewWindow = cutHeader.replace(/window\.location\.href='(.*)'/g, "window.open('$1','_blank')").replace(/<a/g, "<a target=_blank")
                                 replaceLabels = forceNewWindow.replace("Go to Guide", buttonText).replace("Subjects:", "").replace("Posts: ", "").replace("Assignments: ", "").replace("_In Progress", "In Progress")
-                                $(outputQuery).append("<div class='carousel-card'>" + image + title + replaceLabels + "</div>");
-                            },
-                            error: function () {
-                                $(outputQuery).html('<div class="card-error">There was an error!</div>');
+                                html[index] = "<div class='carousel-card'>" + image + title + replaceLabels + "</div></div></div>";
                             }
                         });
-                    }
+                    });
+                    Promise.all(allAJAX).then(function () {
+                        html.forEach((element) => 
+                            $(outputQuery).append(element)
+                        );
+                    });
 
                     return true
                 }
@@ -159,6 +162,48 @@
                     // Attach the handler
                     ele.addEventListener('mousedown', mouseDownHandler);
                 }
+            });
+        </script>
+
+        <div class="resource-hero">
+            <div class="resource-hero-text-container">
+                <div>
+                    <h3>Learn & Unwind</h3>
+                    <p>
+                        With 21 databases,<br>
+                        more than 7000 eBooks,<br>
+                        almost 1500 audiobooks,<br>
+                        and over 9000 books!
+                    </p>
+                </div>
+                <a class="resource-hero-button" href="https://yorkhouse.libguides.com/az.php" target="_blank">
+                    Explore Our Resources!
+                </a>
+            </div>
+            <div class="resource-hero-visual-container">
+                <video class="resource-hero-visual" width="256" height="256" preload="metadata"
+                    style="background: black  url('https://cdn-icons-png.flaticon.com/512/15577/15577943.png') 50% 50% / fit no-repeat;"
+                    loop="true" muted="muted" playsinline="">
+                    <source src="https://cdn-icons-mp4.flaticon.com/512/15577/15577943.mp4#t=0.1" type="video/mp4">
+                </video>
+                <a class="resource-hero-visual-credit" href="https://www.flaticon.com/free-animated-icons/reading"
+                    title="crediting">Animation by Freepik - Flaticon</a>
+            </div>
+        </div>
+        <script> /* Animate hero visual on hover */
+            const hero = document.querySelectorAll('.resource-hero');
+
+            hero.forEach(hero => {
+                var video = hero.getElementsByClassName("resource-hero-visual")[0]
+
+                hero.addEventListener('mouseenter', () => {
+                    video.play();
+                });
+
+                hero.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
             });
         </script>
         {{content_boxes}} <!-- Librarians, Blog List, etc.-->

@@ -11,7 +11,8 @@ LibGuides Custom Bootstrap:
   /* Add font files for Literata */
   @import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
 
-  :root { /* Define palette & fonts */
+  :root {
+    /* Define palette & fonts */
     --font-family-literata: 'Literata', sans-serif;
     --brand-white: white;
     --brand-black: black;
@@ -173,7 +174,6 @@ LibGuides Custom Bootstrap:
 
   .navbar-brand-caption {
     /* Style Brand Text */
-    text-wrap: wrap;
     font-size: .7rem;
     line-height: .7rem;
     font-weight: bold;
@@ -195,13 +195,15 @@ LibGuides Custom Bootstrap:
     margin: auto !important;
     display: block !important;
   }
-  
+
   /* Stop horizontal scrolling to whitespace on Chrome */
   /* Chrome 29+ */
-  @media screen and (-webkit-min-device-pixel-ratio:0)
-    and (min-resolution:.001dpcm) {
-      body{overflow-x: hidden;} 
+  @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    body {
+      overflow-x: hidden;
+    }
   }
+
   /* END: Custom Tweaks*/
 
 
@@ -211,7 +213,8 @@ LibGuides Custom Bootstrap:
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width: calc(100% - 32px); /* Fill minus margin */
+    width: calc(100% - 32px);
+    /* Fill minus margin */
     height: 500px;
     margin: 16px;
   }
@@ -274,8 +277,8 @@ LibGuides Custom Bootstrap:
   .feature-section-header>* {
     flex: 0 0 auto;
   }
-  
-  .feature-section-label>p{
+
+  .feature-section-label>p {
     color: var(--brand-green);
   }
 
@@ -410,6 +413,66 @@ LibGuides Custom Bootstrap:
   }
 
   /* END: Homepage Carousel */
+
+  /* START: Homepage Resources Hero */
+  .resource-hero {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 0 0 auto;
+    flex-wrap: wrap-reverse;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .resource-hero-text-container {
+    display: flex;
+    justify-content: space-between;
+    color: var(--brand-green);
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .resource-hero-text-container h3 {
+    font-weight: bolder;
+    white-space: nowrap;
+    font-size: 64px;
+  }
+
+  .resource-hero-button {
+    color: var(--brand-green);
+    background-color: var(--brand-yellow);
+    width: auto;
+    min-height: 48px;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--brand-white);
+      background-color: var(--brand-pink);
+    }
+  }
+
+  .resource-hero-visual-container {
+    width: min-content;
+    margin-bottom: -24px;
+  }
+
+  .resource-hero-visual-container a {
+    color: gainsboro;
+    font-size: 75%;
+    text-align: center;
+    display: block;
+    bottom: 24px;
+    position: relative;
+  }
+  /* END: Homepage Resources Hero */
 </style>
 <script>
 </script>
