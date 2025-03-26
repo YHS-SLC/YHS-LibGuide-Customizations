@@ -6,59 +6,36 @@
 - `YHS_database_list` .csv & .numbers files are for updating our list of databases
 
 # To Do...
-- Fix the broken dropdown menus on individual guides
 - Styling Ideas
-	- Would be nice to move the guide subject list to top of page, for visibility
-	- afix nav to top of screen
+	- Fix the broken dropdown menus on individual guides
+	- afix nav to top of screen when scrolling
 	- make nav highlight current page https://stackoverflow.com/questions/34491182/make-bootstrap-tab-active-on-the-bases-of-url-link
-	- Apply brand colours to site
-	- Could use JS script to check subject in subject list, and add specific content to the list page?
-	- Homepage
-		- big rotating hero for any upcoming events
-		- Breaking new arrivals into format & fiction/non-fiction
-	- place additional search bar into footer
-	- Use Tailwind (David is more familiar with it)
-		- Use Pines UI: A tailwind ui library that also integrates Alpine JS for more functionality.
-		- Need to watch for incompatability between Tailwind, Alpine JS, and existing LibGuides bootstrap. See breaking issues in https://yorkhouse.libguides.com/dev (which is the only page that uses guide-alt.html) 
-		- Can't really use tailwind for LibGuide `{{Template_Value}}` content. need to be able to assign styles through parent container. Can use tailwind for new stand-alone components: Nav, Footer, Sidebar elements
+	- Tailwind for static elements (see figma board)
 - Content Ideas (Kaleb)
 	- Write a friendly intro in the custom template for 
 		- A-Z databases
 		- Subject & Subject Landing pages
-	- Courses? https://library.rrc.ca/LEARN_modules
-	- Assign subjects to databases
-	- add ILL option to our resources
-	- add to databases
-		- google scholar
-		- wikipedia
+	- add to resources
+		- ILL Request
 		- snopes
 		- internet archive
 		- Standard E-Books (well formatted e-books of open source books, and older books with expired copyright) https://standardebooks.org/ebooks?query=frankenstein&sort=newest&view=grid&per-page=12
 		- World in data https://ourworldindata.org/
-		- Open Research Library - global multi-discipline journal https://openresearchlibrary.org/home
-		- Cambridge University Press, Open Access https://www.cambridge.org/core/publications/open-access
+	- Posts to feature new library materials - Books, magazines, etc
 - Figma implementation
-	- Site-wide
-		- Style using brand colours
-		- navigation bar announcement ribbon
-		- Footer
-		- sidebar boxes
-			- Hours & map
-			- Contact us using google form embed
-			- toggle visiblity button (visible by default on desktop, hidden by default on mobile)
-	- Home page
-		- Image hero
-		- New post carousel (manually populated?)
-		- Iconography for common questions
-			- Printing Help
-			- FAQ
-			- Citing
-			- Book a Tutor
-			- Book a Room
-			- Upcoming Events - feature calendar?
-		- Feature new library materials - Books, magazines, etc
+	- Footer
+	- sidebar - mobile visiblity button
+	- Home page - Iconography for common questions
+		- Printing Help
+		- FAQ
+		- Citing
+		- Book a Tutor
+		- Book a Room
+		- Upcoming Events - feature calendar?
 	- Guide Page
 		- internal guide nav menu on left side
+		- extract subjects from footer, push to heading: `(#s-lg-guide-header-subjects a).each. "href. &.text"`
+	- Search Results
 
 # LibGuide Limitations
 - We are developing overrides for existing LibGuides conventions, and do not have the entire codebase to host in a live server. To combat this, an archive of the website was made using HTTrack. 
@@ -72,20 +49,19 @@
     - Profile
     - A-Z Guide Browser
 - Can edit CSS & JS: Site-wide, or embed in per-page `<style>` & `<script>` tags
-    - LibGuides will come with a number of default css configurations we can't easily remove without breaking searching/subject view things.
 # Design Notes
 - [Our Figma Project](https://www.figma.com/design/sTxIk3kZhqVAVE7eAGqGH3/SLC?node-id=1-9384&t=Tm2fjONQBzFeh19G-0)
 - https://library.rrc.ca/home
 - [Wentworth Institute of Technology Libguides](https://library.wit.edu/home)
     - [Their Github Project Page](https://github.com/Adam-Shire-WIT/libguides2-customizations?tab=readme-ov-file)
-- [[LibGuides ABC.xlsx]] - From Aviva
+- LibGuides ABC.xlsx - From Aviva
 - brooklyn public library case study https://medium.com/design-bootcamp/restructuring-the-brooklyn-public-librarys-information-architecture-c9675a313ff1
 - The website depends on several google drive files, as a way to protect PII behind a google login. They are all in [this folder in Kaleb's drive](https://drive.google.com/drive/folders/1udwNokphi7hSrDBAW7WRa8ySkBLZvj1Y)
 	- Book Request - Form & Spreadsheet
 	- Book Review - Form & Spreadsheet
 	- Contact Us - Form & Spreadsheet
 	- Database Links/Logins - Multi-slide Presentation
-	- Featuring Angela - 1 slide Presentation
+	- Featuring Student - Multiple 1 slide Presentations
 - Use case Ideas
     - Booking rooms
     - Mention what you can book on library catalogue page
