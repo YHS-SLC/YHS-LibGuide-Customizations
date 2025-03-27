@@ -89,7 +89,7 @@
                             url: link,
                             async: true,
                             success: function (response) {
-                                imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/|\")/g, "_") + ".jpg"
+                                imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/|\"|\')/g, "_") + ".jpg"
                                 image = `<img class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
                                 title = "<h3 class='carousel-card-title'>" + titleList[index].substring(1) + "</h2>"
                                 noNewlines = response.replace(/(?:\\n)/g, '');
