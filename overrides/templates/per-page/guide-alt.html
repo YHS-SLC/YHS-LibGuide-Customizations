@@ -7,8 +7,16 @@
     <!-- BEGIN: Guide Info Header -->
     <div id="s-lg-guide-header" class="container s-lib-header s-lib-side-borders">
         <div id="s-lg-guide-header-info">
-            <h1 id="s-lg-guide-name">{{guide_title}}: {{page_title}}</h1>
+            <h1 id="s-lg-guide-name">{{guide_title}}</h1>
             <div id="s-lg-guide-desc-container">
+                <div id="s-lg-guide-header-updated" class="s-lg-h-separator">
+                    {{last_updated_display}} </div>
+                <div id="s-lg-guide-header-subjects">
+                    {{guide_subjects}}
+                </div>
+                <div id="s-lg-guide-header-tags">
+                    {{guide_tags}}
+                </div>
                 <span id="s-lg-guide-description">{{guide_description}}</span>
             </div>
         </div>
@@ -29,33 +37,10 @@
         {{page_prev_next_links}}
     </div>
     <!-- END: Guide Content -->
-    
     <div id="page-footer">
         <div id="default-page-footer" class="s-lib-footer footer container s-lib-side-borders">
-            <div id="s-lg-guide-header-meta" class="pad-top-sm pad-left-med clearfix">
-                <ul id="s-lg-guide-header-attributes" class="">
-                    <li id="s-lg-guide-header-updated" class="s-lg-h-separator">
-                        {{last_updated_display}} </li>
-                    <li id="s-lg-guide-header-url" class="s-lg-h-separator">
-                        {{guide_url_display}}
-                    </li>
-                    <li id="s-lg-guide-print-url">
-                        {{print_url_display}}
-                    </li>
-                </ul>
-                <div id="s-lib-footer-login-link" class="pull-right pad-right-med">
-                    {{login_url_display}} </div>
-            </div>
-            <div class="pad-bottom-sm clearfix">
-                <div id="s-lib-footer-support-link" class="pull-right pad-right-med">
-                    {{support_url_display}} </div>
-                <div id="s-lg-guide-header-subjects" class="pad-top-sm pad-left-med pad-right-med pull-left">
-                    {{guide_subjects}}
-                </div>
-                <div id="s-lg-guide-header-tags" class="pad-top-sm pad-left-med">
-                    {{guide_tags}}
-                </div>
-            </div>
+            <div id="s-lib-footer-login-link" class="pull-right pad-right-med">
+                {{login_url_display}} </div>
         </div>
         {{public_footer}}
     </div>

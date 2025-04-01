@@ -5,41 +5,50 @@
     <!-- END: Page Header -->
     <!-- BEGIN: Content Header -->
     <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
-        <h1 id="s-lib-public-header-title">{{page_title}}</h1>
-        <div id="s-lib-public-header-desc">{{page_description}}</div>
+        <h1>Resources</h1>
     </div>
     <!-- END: Content Header -->
-    <!-- BEGIN: Nav Bar -->
-    <div id="s-lib-public-nav" class="container s-lib-side-borders">
-        {{page_nav}}
-    </div>
-    <!-- END: Nav Bar -->
-    <!-- BEGIN: content -->
+    <!-- BEGIN: Content -->
     <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-        <section>
-            <div id="s-lg-az-search-bar" class="row">
-                <div id="az-search-col-1" class="col-md-12 center">
-                    {{navbar_wide}}
+        <div id="resource-filter">
+            {{navbar_wide}}
+            <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button" onclick="springSpace.azList.reset();">Clear Filters</button>
+        </div>
+        <div id="resource-results">
+            <div id="featured-resource-list">
+                {{popular_box}}
+            </div>
+            <div id="resource-list">
+                <div id="filter-label">
+                    {{search_reset}}
+                </div>
+                <div id="s-lg-az-content" class="pad-right-sm">
+                    <div class="bold s-lib-color-lt-grey pad-top-med text-center">Loading...</div>
                 </div>
             </div>
-        </section>
-        <section>
-            <div id="s-lg-az-cols" class="row">
-                <div id="col1" class="col-md-8 center">
-                    <div id="s-lg-az-search-reset" class="pad-right-sm">
-                        {{search_reset}}
-                    </div>
-                    <div id="s-lg-az-content" class="pad-right-sm">
-                        <div class="bold s-lib-color-lt-grey pad-top-med text-center">Loading...</div>
-                    </div>
-                </div>
-                <div id="col2" class="col-md-4 center">
-                    {{popular_box}}
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
-    <!-- END: content -->
+    <script>
+        var inner_filter_element = $("#s-lg-az-filters section").html()
+        $("#resource-filter nav").replaceWith(inner_filter_element)
+        if (window.location.search != "") {
+            $("#featured-resource-list").hide()
+        }
+    </script>
+    <style>
+        #s-lg-az-reset{
+            display: none !important;
+        }
+        .s-lg-az-result-share,
+        #featured-resource-list .s-lg-az-result-badges,
+        #resource-filter .navbar-header {
+            display: none;
+        }
+        .s-lg-az-result-badges {
+            float: right;
+        }
+    </style>
+    <!-- END: Content -->
     
     <div id="page-footer">
         <div id="default-page-footer">

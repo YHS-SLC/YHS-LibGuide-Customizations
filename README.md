@@ -24,6 +24,7 @@
 	- Posts to feature new library materials - Books, magazines, etc
 - Figma implementation
 	- Footer
+		- `(#s-lib-footer-login-link > a).href` extract from old footer into custom footer
 	- sidebar - mobile visiblity button
 	- Home page - Iconography for common questions
 		- Printing Help
@@ -40,7 +41,7 @@
 # LibGuide Limitations
 - We are developing overrides for existing LibGuides conventions, and do not have the entire codebase to host in a live server. To combat this, an archive of the website was made using HTTrack. 
 - Don't have a way to upload custom fonts - need to use [google hosted fonts](https://fonts.google.com/).
-- Can upload custom images
+- Can upload custom images. They take a day to update when deleted or replaced.
 - Can edit individual HTML templates for:
     - Homepage
     - Guides
