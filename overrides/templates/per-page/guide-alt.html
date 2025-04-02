@@ -31,11 +31,1484 @@
     </div>
     <div id="s-lg-guide-tabs-title-bar" class="container s-lib-side-borders"></div>
     <!-- BEGIN: Guide Content -->
- 
+
     <div id="s-lg-guide-main" class="container s-lib-main s-lib-side-borders" tabindex="-1">
         {{empty_page_sub_page_list}}
         {{content}}
         {{page_prev_next_links}}
+        <section>
+
+
+            <div id="filter">
+                <div id="heading">
+                    <h2>
+                        Filter Resources
+                    </h2>
+                    <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button"
+                        onclick="springSpace.azList.reset();">Clear</button>
+                </div>
+                <nav>
+                    <li>
+                        <form role="search" onsubmit="springSpace.publicObj.filterAzBySearch(26075); return false;">
+                            <div class="form-group">
+                                <label class="control-label sr-only" for="s-lg-az-search">
+                                    DATABASES
+                                </label>
+                                <div class="input-group">
+                                    <input type="text" class="s-lg-az-search form-control" aria-label="Search Resources"
+                                        placeholder="By Search" maxlength="260">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-outline-secondary" type="submit"
+                                            aria-label="Go">
+                                            Go
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="dropdown">
+                        <a class="nav-item dropdown-toggle" data-toggle="dropdown">By Subject</a>
+                        <select multiple="" size="8" id="s-lg-sel-subjects" class="col-subjects dropdown-menu"
+                            name="s-lg-sel-subjects"
+                            onchange="springSpace.publicObj.filterAzBySubject(jQuery(this).val(), 26075);">Database
+                            Subject Filter<option value="" selected="">All Subjects</option>
+                            <option value="138925">Deeper Analysis (1)</option>
+                            <option value="138907">English (3)</option>
+                            <option value="138905">Fiction (2)</option>
+                            <option value="138924">Global News (5)</option>
+                            <option value="138977">Multi-Subject (4)</option>
+                            <option value="138908">Science (3)</option>
+                            <option value="138909">Socials (6)</option>
+                        </select>
+                    </li>
+                    <li class="dropdown">
+                        <a class="nav-item dropdown-toggle" data-toggle="dropdown">By Type</a>
+                        <select multiple="" size="8" id="s-lg-sel-az-types" class="col-types dropdown-menu"
+                            name="s-lg-sel-az-types"
+                            onchange="springSpace.publicObj.filterAzByType(jQuery(this).val(), 26075);"
+                            data-placeholder="All Database Types">Database Types Filter<option value="" selected="">All
+                                Database Types</option>
+                            <option value="28812">Digital (20)</option>
+                            <option value="28809">Fiction (2)</option>
+                            <option value="28807">Full text (21)</option>
+                            <option value="28808">News articles (5)</option>
+                            <option value="28810">Non-Fiction (20)</option>
+                            <option value="28811">Physical (1)</option>
+                        </select>
+                    </li>
+                    <li class="dropdown">
+                        <a class="nav-item dropdown-toggle" data-toggle="dropdown">By Vendor</a>
+                        <select multiple="" size="8" id="s-lg-sel-az-vendors" class="col-vendors dropdown-menu"
+                            name="s-lg-sel-az-vendors"
+                            onchange="springSpace.publicObj.filterAzByVendor(jQuery(this).val(), 26075);"
+                            data-placeholder="All Vendors / Providers">Database Vendors Filter<option value=""
+                                selected="">All Vendors / Providers</option>
+                            <option value="74453">Bloom (1)</option>
+                            <option value="74450">Britannica (1)</option>
+                            <option value="74444">Financial Times (1)</option>
+                            <option value="74504">Flipster (1)</option>
+                            <option value="74447">Follett (1)</option>
+                            <option value="74449">Gale (4)</option>
+                            <option value="74455">Infobase (4)</option>
+                            <option value="74451">Jstor (1)</option>
+                            <option value="74457">National Film Board (1)</option>
+                            <option value="74446">New York Times (1)</option>
+                            <option value="74488">Nikkei (1)</option>
+                            <option value="74445">Press Reader (1)</option>
+                            <option value="74456">Science (1)</option>
+                            <option value="74448">Sora (1)</option>
+                            <option value="74454">YHS (1)</option>
+                        </select>
+                    </li>
+                </nav>
+                <div id="original-filter" style="display: none;">
+                    <!--The script that filters content checks the original setup somehow to stack categories.-->
+
+                    <nav class="navbar navbar-expand-lg navbar-default" aria-label="Search filters">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggler navbar-toggle collapsed"
+                                    data-toggle="collapse" data-target="#s-lg-az-nav-1" data-bs-toggle="collapse"
+                                    data-bs-target="#s-lg-az-nav-1">
+                                    <span class="sr-only">Toggle search filters navigation</span>
+                                    <span class="navbar-toggler-icon"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+
+                            <div class="collapse navbar-collapse" id="s-lg-az-nav-1">
+                                <div id="s-lg-az-filters" style="padding-top:15px;">
+                                    <section>
+                                        <div id="s-lg-az-filter-cols" class="row">
+                                            <div id="col-subjects" class="col-subjects col-md-3 center"><label
+                                                    class="control-label sr-only" for="s-lg-sel-subjects">Database
+                                                    Subject Filter</label><select id="s-lg-sel-subjects"
+                                                    name="s-lg-sel-subjects" class="s-lg-sel-subjects form-control"
+                                                    onchange="springSpace.publicObj.filterAzBySubject(jQuery(this).val(), 26075);">
+                                                    <option value="" selected="">All Subjects</option>
+                                                    <option value="138925">Deeper Analysis (1)</option>
+                                                    <option value="138907">English (3)</option>
+                                                    <option value="138905">Fiction (2)</option>
+                                                    <option value="138924">Global News (5)</option>
+                                                    <option value="138977">Multi-Subject (4)</option>
+                                                    <option value="138908">Science (3)</option>
+                                                    <option value="138909">Socials (6)</option>
+                                                </select></div>
+                                            <div id="col-types" class="col-types col-md-3 center"><label
+                                                    class="control-label sr-only" for="s-lg-sel-az-types">Database Types
+                                                    Filter</label><select id="s-lg-sel-az-types"
+                                                    name="s-lg-sel-az-types" class="s-lg-sel-az-types form-control"
+                                                    onchange="springSpace.publicObj.filterAzByType(jQuery(this).val(), 26075);"
+                                                    data-placeholder="All Database Types">
+                                                    <option value="" selected="">All Database Types</option>
+                                                    <option value="28812">Digital (20)</option>
+                                                    <option value="28809">Fiction (2)</option>
+                                                    <option value="28807">Full text (21)</option>
+                                                    <option value="28808">News articles (5)</option>
+                                                    <option value="28810">Non-Fiction (20)</option>
+                                                    <option value="28811">Physical (1)</option>
+                                                </select></div>
+                                            <div id="col-vendors" class="col-vendors col-md-3 center"><label
+                                                    class="control-label sr-only" for="s-lg-sel-az-vendors">Database
+                                                    Vendors Filter</label><select id="s-lg-sel-az-vendors"
+                                                    name="s-lg-sel-az-vendors" class="s-lg-sel-az-vendors form-control"
+                                                    onchange="springSpace.publicObj.filterAzByVendor(jQuery(this).val(), 26075);"
+                                                    data-placeholder="All Vendors / Providers">
+                                                    <option value="" selected="">All Vendors / Providers</option>
+                                                    <option value="74453">Bloom (1)</option>
+                                                    <option value="74450">Britannica (1)</option>
+                                                    <option value="74444">Financial Times (1)</option>
+                                                    <option value="74504">Flipster (1)</option>
+                                                    <option value="74447">Follett (1)</option>
+                                                    <option value="74449">Gale (4)</option>
+                                                    <option value="74455">Infobase (4)</option>
+                                                    <option value="74451">Jstor (1)</option>
+                                                    <option value="74457">National Film Board (1)</option>
+                                                    <option value="74446">New York Times (1)</option>
+                                                    <option value="74488">Nikkei (1)</option>
+                                                    <option value="74445">Press Reader (1)</option>
+                                                    <option value="74456">Science (1)</option>
+                                                    <option value="74448">Sora (1)</option>
+                                                    <option value="74454">YHS (1)</option>
+                                                </select></div>
+                                            <div id="col-search" class="col-md-3 center">
+                                                <form role="search"
+                                                    onsubmit="springSpace.publicObj.filterAzBySearch(26075); return false;">
+                                                    <div class="form-group">
+                                                        <label class="control-label sr-only" for="s-lg-az-search">
+                                                            DATABASES
+                                                        </label>
+
+                                                        <div class="input-group">
+                                                            <input type="text" class="s-lg-az-search form-control"
+                                                                aria-label="Search for Databases"
+                                                                placeholder="Search for Databases" maxlength="260">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-outline-secondary"
+                                                                    type="submit" aria-label="Go">
+                                                                    Go
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+            <div id="resource-results">
+                <div id="featured-resource-list" style="display: block;">
+                    <div id="s-lg-az-popular-div">
+                        <div class="margin-bottom-xlg">
+                            <div class="s-lib-public-side-header">
+                                <h2 class="pad-bottom-sm">Featured Databases</h2>
+                            </div>
+                            <div class="txt pad-top-sm">
+                                <div id="s-lg-az-popular-loading" class="bold s-lib-color-lt-grey pad-top-med"
+                                    style="display: none;">Loading...</div>
+                                <div id="s-lg-az-popular" style="display: block;">The most frequently-used databases
+
+
+                                    <div class="s-lg-az-result
+            
+            
+            ">
+                                        <div class="s-lg-az-result-title">
+                                            <a href="https://yorkhouse.libguides.com/resources/financial-times"
+                                                target="_blank"
+                                                onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423315',_st_inc_return: this});">
+                                                Financial Times
+                                            </a><i class="fa fa-fw fa-external-link "
+                                                aria-label="This link opens in a new window"
+                                                title="This link opens in a new window"></i>
+                                        </div>
+                                        <div class="s-lg-az-result-badges">
+
+
+                                            <span
+                                                class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                                Featured
+                                            </span>
+
+                                        </div>
+
+                                        <div class="s-lg-az-result-share" title="Share">
+                                            <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423315,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                                <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                                <span class="sr-only">This opens a pop-up window to share the URL for
+                                                    this database</span>
+                                            </button>
+                                        </div>
+
+
+                                        <div class="s-lg-az-result-description">Top-rated for international news.</div>
+
+
+
+
+
+
+                                    </div>
+
+
+                                    <div class="s-lg-az-result
+            
+            
+            ">
+                                        <div class="s-lg-az-result-title">
+                                            <a href="https://yorkhouse.libguides.com/resources/new-york-times"
+                                                target="_blank"
+                                                onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423329',_st_inc_return: this});">
+                                                New York Times
+                                            </a><i class="fa fa-fw fa-external-link "
+                                                aria-label="This link opens in a new window"
+                                                title="This link opens in a new window"></i>
+                                        </div>
+                                        <div class="s-lg-az-result-badges">
+
+
+                                            <span
+                                                class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                                Featured
+                                            </span>
+
+                                        </div>
+
+                                        <div class="s-lg-az-result-share" title="Share">
+                                            <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423329,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                                <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                                <span class="sr-only">This opens a pop-up window to share the URL for
+                                                    this database</span>
+                                            </button>
+                                        </div>
+
+
+                                        <div class="s-lg-az-result-description">Your first visit to this database must
+                                            be on-campus, to register your device. After that you can also access FT
+                                            off-campus.</div>
+
+
+
+
+
+
+                                    </div>
+
+
+                                    <div class="s-lg-az-result
+            
+            
+            ">
+                                        <div class="s-lg-az-result-title">
+                                            <a href="https://yorkhouse.libguides.com/resources/nikkei-asia"
+                                                target="_blank"
+                                                onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37458513',_st_inc_return: this});">
+                                                Nikkei Asia
+                                            </a><i class="fa fa-fw fa-external-link "
+                                                aria-label="This link opens in a new window"
+                                                title="This link opens in a new window"></i>
+                                        </div>
+                                        <div class="s-lg-az-result-badges">
+
+
+                                            <span
+                                                class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                                Featured
+                                            </span>
+
+                                        </div>
+
+                                        <div class="s-lg-az-result-share" title="Share">
+                                            <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37458513,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                                <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                                <span class="sr-only">This opens a pop-up window to share the URL for
+                                                    this database</span>
+                                            </button>
+                                        </div>
+
+
+                                        <div class="s-lg-az-result-description">Available on-campus only.</div>
+
+
+
+
+
+
+                                    </div>
+
+
+                                    <div class="s-lg-az-result
+            
+            
+            ">
+                                        <div class="s-lg-az-result-title">
+                                            <a href="https://yorkhouse.libguides.com/resources/press-reader"
+                                                target="_blank"
+                                                onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423316',_st_inc_return: this});">
+                                                Press Reader
+                                            </a><i class="fa fa-fw fa-external-link "
+                                                aria-label="This link opens in a new window"
+                                                title="This link opens in a new window"></i>
+                                        </div>
+                                        <div class="s-lg-az-result-badges">
+
+
+                                            <span
+                                                class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                                Featured
+                                            </span>
+
+                                        </div>
+
+                                        <div class="s-lg-az-result-share" title="Share">
+                                            <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423316,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                                <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                                <span class="sr-only">This opens a pop-up window to share the URL for
+                                                    this database</span>
+                                            </button>
+                                        </div>
+
+
+                                        <div class="s-lg-az-result-description">7,000 newspapers &amp; magazines from
+                                            around the world.</div>
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="resource-list">
+                    <div id="filter-label">
+                        <h2 id="s-lg-az-result-count" aria-live="polite" class="bold s-lib-text-lg pad-right-med"><span
+                                class="list_count">21</span> Databases found</h2> <button id="s-lg-az-reset"
+                            class="btn btn-default btn-sm s-lib-hide" type="button"
+                            onclick="springSpace.azList.reset();" style="display: none;">Clear Filters/Browse All
+                            Databases</button>
+                    </div>
+                    <div id="s-lg-az-content" class="pad-right-sm">
+                        <div id="s-lg-az-results">
+                            <div id="s-lg-az-results-title">All Databases</div>
+                            <div id="s-lg-az-name-a" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">A</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/infobase/history"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423442',_st_inc_return: this});">
+                                            Ancient &amp; Medieval History
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423442,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-b" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">B</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/bloom-literary"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423437',_st_inc_return: this});">
+                                            Bloom’s Literary Reference Online
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423437,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/britannica" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423434',_st_inc_return: this});">
+                                            Britannica
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423434,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-f" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">F</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/financial-times"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423315',_st_inc_return: this});">
+                                            Financial Times
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+                                        <span class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                            Featured
+                                        </span>
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423315,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Top-rated for international news.</div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/Resources/flipster" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37463802',_st_inc_return: this});">
+                                            Flipster
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37463802,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Offers online access to Education Week.
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/catalogue" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423430',_st_inc_return: this});">
+                                            Follett Destiny
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423430,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Our physical catalogue of 9,000 physical
+                                        books and DVDs at the Learning Commons</div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-g" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">G</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/gale/biography"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423433',_st_inc_return: this});">
+                                            Gale in Context - Biography
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423433,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/gale/highschool"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423432',_st_inc_return: this});">
+                                            Gale in Context - Highschool
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423432,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/gale/history" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423444',_st_inc_return: this});">
+                                            Gale in Context - World History
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423444,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-h" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">H</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/infobase/health"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423439',_st_inc_return: this});">
+                                            Health Reference Centre
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423439,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-i" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">I</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/yhs/indigenous"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423438',_st_inc_return: this});">
+                                            Indigenous Oral Resources
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423438,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Resources compiled by Chloe, Chanel, and
+                                        Aila, in the English First People 12 course, June 2024</div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-j" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">J</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/jstor" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423435',_st_inc_return: this});">
+                                            Jstor
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423435,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-n" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">N</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/national-film-board"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423446',_st_inc_return: this});">
+                                            National Film Board (NFB)
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423446,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Log in with your school google account. NFB
+                                        films can be played on campus without logging in (because we're using IP address
+                                        authentication). We have an NFB Education licence and, therefore, can make use
+                                        of the resources available on nfb.ca in the classroom.</div>
+
+
+
+                                    <div class="s-lg-label-moreinfo s-lg-label-more-info">
+                                        <button class="s-lg-label-more btn btn-sm btn-link" aria-expanded="false"
+                                            id="s-lg-1-more-info-database-more-37423446" style="display:block;" onclick="
+                jQuery('#s-lg-1-more-info-database-moreinfo-37423446').toggle();
+                jQuery('#s-lg-1-more-info-database-less-37423446').toggle();
+                jQuery('#s-lg-1-more-info-database-more-37423446').toggle();">more...</button>
+                                        <button class="s-lg-label-less btn btn-sm btn-link" aria-expanded="true"
+                                            id="s-lg-1-more-info-database-less-37423446" style="display:none;" onclick="
+                jQuery('#s-lg-1-more-info-database-moreinfo-37423446').toggle();
+                jQuery('#s-lg-1-more-info-database-less-37423446').toggle();
+                jQuery('#s-lg-1-more-info-database-more-37423446').toggle(); ">less...</button>
+                                    </div>
+                                    <div id="s-lg-1-more-info-database-moreinfo-37423446"
+                                        class="s-lg-content-more-info " style="display:none;">
+                                        NFB films can be played on campus without logging in (because we're using IP
+                                        address authentication). We have an NFB Education licence and, therefore, can
+                                        make use of the resources available on nfb.ca in the classroom.
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/new-york-times"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423329',_st_inc_return: this});">
+                                            New York Times
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+                                        <span class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                            Featured
+                                        </span>
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423329,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Your first visit to this database must be
+                                        on-campus, to register your device. After that you can also access FT
+                                        off-campus.</div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/nikkei-asia" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37458513',_st_inc_return: this});">
+                                            Nikkei Asia
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+                                        <span class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                            Featured
+                                        </span>
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37458513,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Available on-campus only.</div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-p" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">P</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/gale/points-to-the-past"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423443',_st_inc_return: this});">
+                                            Points to the Past
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423443,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/press-reader" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423316',_st_inc_return: this});">
+                                            Press Reader
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+                                        <span class="margin-left-sm s-lg-az-result-badge-popular label label-primary">
+                                            Featured
+                                        </span>
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423316,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">7,000 newspapers &amp; magazines from around
+                                        the world.</div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-s" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">S</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/science-journal"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423440',_st_inc_return: this});">
+                                            Science Journal
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423440,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">Only available on-campus.</div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/infobase/science"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423441',_st_inc_return: this});">
+                                            Science Online
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423441,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/sora" target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423431',_st_inc_return: this});">
+                                            Sora eBooks
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423431,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description">6,900 eBooks + 1,200 audiobooks</div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="s-lg-az-name-w" class="s-lg-db-panel">
+                                <h3 class="s-lg-db-panel-title">W</h3>
+
+
+                                <div class="s-lg-az-result
+            
+            
+            ">
+                                    <div class="s-lg-az-result-title">
+                                        <a href="https://yorkhouse.libguides.com/resources/infobase/religion"
+                                            target="_blank"
+                                            onclick="return springSpace.springTrack.trackLink({link: this,_st_type_id: '16',_st_content_id: '37423445',_st_inc_return: this});">
+                                            World Religions Online
+                                        </a><i class="fa fa-fw fa-external-link "
+                                            aria-label="This link opens in a new window"
+                                            title="This link opens in a new window"></i>
+                                    </div>
+                                    <div class="s-lg-az-result-badges">
+
+
+
+                                    </div>
+
+                                    <div class="s-lg-az-result-share" title="Share">
+                                        <button class="btn btn-sm btn-link" onclick="springSpace.publicObj.displayAzShareAlert({
+                'id': 37423445,
+                'site_id': 26075,
+                'name': 'Share',
+                'action': 522,
+                'btn_text': 'Close'
+                });">
+                                            <i class="fa fa-share-alt fa-lg fa-fw" aria-hidden="true"></i>
+                                            <span class="sr-only">This opens a pop-up window to share the URL for this
+                                                database</span>
+                                        </button>
+                                    </div>
+
+
+                                    <div class="s-lg-az-result-description"></div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <style>
+            #s-lib-public-header {
+                text-align: center;
+            }
+            #s-lib-public-main {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 16px
+            }
+            #resource-results {
+                min-width: 300px;
+                flex: 1 0 auto;
+                width: 70%;
+            }
+            #s-lg-az-reset {
+                display: none !important;
+            }
+            .s-lg-az-result-share,
+            #featured-resource-list .s-lg-az-result-badges,
+            #resource-filter .navbar-header {
+                display: none;
+            }
+            .s-lg-az-result-badges {
+                float: right;
+            }
+            #filter {
+                width: 25%;
+                flex: 1 0 auto;
+                min-width: 230px;
+            }
+            #filter h2 {
+                font-size: 22px;
+            }
+            #filter #heading {
+                display: inline-flex;
+                justify-content: space-between;
+                width: 100%;
+                padding-bottom: 8px;
+            }
+            #filter li {
+                list-style-type: none;
+            }
+            #filter button {
+                border: 1px solid #ced4da;
+            }
+            #filter nav {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .dropdown-menu {
+                display: none;
+                position: relative;
+                overflow: auto;
+                height: fit-content;
+                width: 100% !important;
+            }
+            .open .dropdown-menu {
+                display: block;
+            }
+            .s-lg-db-panel {
+                margin-bottom: 0;
+            }
+            h3.s-lg-db-panel-title {
+                display: none;
+            }
+        </style>
     </div>
 
     <!-- END: Guide Content -->

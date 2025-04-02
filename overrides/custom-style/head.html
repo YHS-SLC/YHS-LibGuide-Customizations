@@ -233,7 +233,7 @@ LibGuides Custom Bootstrap:
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 64px;
+    padding: 2.5vw 5vw;
     flex: 0 0 auto;
     width: 100%;
     height: 500px;
@@ -242,7 +242,8 @@ LibGuides Custom Bootstrap:
 
   .hero-section-large-text {
     font-weight: Bold;
-    font-size: 72px;
+    font-size: min(72px, 16vw);
+    
     font-family: var(--font-family-literata);
   }
 
@@ -272,13 +273,15 @@ LibGuides Custom Bootstrap:
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .feature-section-header>* {
-    flex: 0 0 auto;
+    flex: 1 0 auto;
   }
 
   .feature-section-label>p {
+    min-width: 260px;
     color: var(--brand-green);
   }
 
@@ -286,6 +289,8 @@ LibGuides Custom Bootstrap:
     color: var(--brand-green);
     background-color: var(--brand-yellow);
     width: 33%;
+    min-width: 250px;
+    max-width: 400px;
     min-height: 48px;
     display: block;
     display: flex;
@@ -350,9 +355,13 @@ LibGuides Custom Bootstrap:
       display: none !important;
     }
   }
-
+  /* Views */
+  .carousel-card .pad-left-med {
+    display: none;
+  }
   /*Views Label*/
   .carousel-card .pad-left-med:after {
+    display: none;
     content: " \view(s)";
   }
 
@@ -420,8 +429,6 @@ LibGuides Custom Bootstrap:
   .resource-hero {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    flex: 0 0 auto;
     flex-wrap: wrap-reverse;
     padding: 8px;
     gap: 8px;
@@ -429,6 +436,7 @@ LibGuides Custom Bootstrap:
 
   .resource-hero-text-container {
     display: flex;
+    max-width: 100%;
     justify-content: space-between;
     color: var(--brand-green);
     flex-direction: column;
@@ -437,7 +445,6 @@ LibGuides Custom Bootstrap:
 
   .resource-hero-text-container h3 {
     font-weight: bolder;
-    white-space: nowrap;
     font-size: 64px;
   }
 
