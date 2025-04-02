@@ -10,10 +10,58 @@
     <!-- END: Content Header -->
     <!-- BEGIN: Content -->
     <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-        <div id="resource-filter">
-            {{navbar_wide}}
-            <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button"
-                onclick="springSpace.azList.reset();">Clear Filters</button>
+        
+        <div id="filter">
+            <div id="heading">
+                <h2>
+                    Filter Resources
+                </h2>
+                <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button"
+                onclick="springSpace.azList.reset();">Clear</button>
+            </div>
+            <nav>
+                <li>
+                    <form role="search" onsubmit="springSpace.publicObj.filterAzBySearch(26075); return false;">
+                        <div class="form-group">
+                            <label class="control-label sr-only" for="s-lg-az-search">
+                                DATABASES
+                            </label>
+                            <div class="input-group">
+                                <input type="text" class="s-lg-az-search form-control" aria-label="Search Resources"
+                                    placeholder="By Search" maxlength="260">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-outline-secondary" type="submit" aria-label="Go">
+                                        Go
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a class="nav-item dropdown-toggle" data-toggle="dropdown">By Subject</a>
+                    <select multiple size="8" id="s-lg-sel-subjects" class="col-subjects dropdown-menu" name="s-lg-sel-subjects" class="s-lg-sel-subjects form-control"
+                        onchange="springSpace.publicObj.filterAzBySubject(jQuery(this).val(), 26075);">
+                    </select>
+                </li>
+                <li class="dropdown">
+                    <a class="nav-item dropdown-toggle" data-toggle="dropdown">By Type</a>
+                    <select multiple size="8" id="s-lg-sel-az-types" class="col-types dropdown-menu" name="s-lg-sel-az-types" class="s-lg-sel-az-types form-control"
+                        onchange="springSpace.publicObj.filterAzByType(jQuery(this).val(), 26075);"
+                        data-placeholder="All Database Types">
+                    </select>
+                </li>
+                <li class="dropdown">
+                    <a class="nav-item dropdown-toggle" data-toggle="dropdown">By Vendor</a>
+                    <select multiple size="8" id="s-lg-sel-az-vendors" class="col-vendors dropdown-menu" name="s-lg-sel-az-vendors" class="s-lg-sel-az-vendors form-control"
+                        onchange="springSpace.publicObj.filterAzByVendor(jQuery(this).val(), 26075);"
+                        data-placeholder="All Vendors / Providers">
+                    </select>
+                </li>
+            </nav>
+            <div id="original-filter" style="display: none;"> <!--The script that filters content checks the original setup somehow to stack categories.-->
+                {{navbar_wide}}
+            </div>
         </div>
         <div id="resource-results">
             <div id="featured-resource-list">
@@ -29,81 +77,71 @@
             </div>
         </div>
     </div>
-    <nav class="filter">
-        <li>
-            <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button"
-            onclick="springSpace.azList.reset();">Clear Filters</button>
-        </li>
-        <li>
-            <form role="search" onsubmit="springSpace.publicObj.filterAzBySearch(26075); return false;">
-                <div class="form-group">
-                    <label class="control-label sr-only" for="s-lg-az-search">
-                        DATABASES
-                    </label>
-
-                    <div class="input-group">
-                        <input type="text" class="s-lg-az-search form-control" aria-label="Search for Databases"
-                            placeholder="Search for Databases" maxlength="260">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default btn-outline-secondary" type="submit" aria-label="Go">
-                                Go
-                            </button>
-                        </span>
-                    </div>
-                </div>
-            </form>
-        </li>
-        <li class="dropdown">
-            <a class="nav-item dropdown-toggle" data-toggle="dropdown">Subject</a>
-            <select size="5" id="s-lg-sel-subjects" class="col-subjects dropdown-menu" name="s-lg-sel-subjects" class="s-lg-sel-subjects form-control"
-                onchange="springSpace.publicObj.filterAzBySubject(jQuery(this).val(), 26075);">
-            </select>
-        </li>
-        <li class="dropdown">
-            <a class="nav-item dropdown-toggle" data-toggle="dropdown">Type</a>
-            <select size="5" id="s-lg-sel-az-types" class="col-types dropdown-menu" name="s-lg-sel-az-types" class="s-lg-sel-az-types form-control"
-                onchange="springSpace.publicObj.filterAzByType(jQuery(this).val(), 26075);"
-                data-placeholder="All Database Types">
-            </select>
-        </li>
-        <li class="dropdown">
-            <a class="nav-item dropdown-toggle" data-toggle="dropdown">Vendor</a>
-            <select size="5" id="s-lg-sel-az-vendors" class="col-vendors dropdown-menu" name="s-lg-sel-az-vendors" class="s-lg-sel-az-vendors form-control"
-                onchange="springSpace.publicObj.filterAzByVendor(jQuery(this).val(), 26075);"
-                data-placeholder="All Vendors / Providers">
-            </select>
-        </li>
-    </nav>
-    <script>
-        var inner_filter_element = $("#s-lg-az-filters section").html()
-        $("#resource-filter nav").replaceWith(inner_filter_element)
-        if (window.location.search != "") {
-            $("#featured-resource-list").hide()
-        }
-    </script>
     <style>
+        #s-lib-public-header {
+            text-align: center;
+        }
+        #s-lib-public-main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px
+        }
+        #resource-results {
+            min-width: 300px;
+            flex: 1 0 auto;
+            width: 70%;
+        }
         #s-lg-az-reset {
             display: none !important;
         }
-
         .s-lg-az-result-share,
         #featured-resource-list .s-lg-az-result-badges,
         #resource-filter .navbar-header {
             display: none;
         }
-
         .s-lg-az-result-badges {
             float: right;
         }
-
+        #filter {
+            width: 25%;
+            flex: 1 0 auto;
+            min-width: 230px;
+        }
+        #filter h2 {
+            font-size: 22px;
+        }
+        #filter #heading {
+            display: inline-flex;
+            justify-content: space-between;
+            width: 100%;
+            padding-bottom: 8px;
+        }
+        #filter li {
+            list-style-type: none;
+        }
+        #filter button {
+            border: 1px solid #ced4da;
+        }
+        #filter nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
         .dropdown-menu {
             display: none;
             position: relative;
             overflow: auto;
+            height: fit-content;
+            width: 100% !important;
         }
-
         .open .dropdown-menu {
             display: block;
+        }
+        .s-lg-db-panel {
+            margin-bottom: 0;
+        }
+        h3.s-lg-db-panel-title {
+            display: none;
         }
     </style>
     <script>
@@ -112,54 +150,24 @@
                 $(this).parents(".dropdown").toggleClass("open");  /*when you click on an element with attr data-toggle='dropdown' it toggle the class "open" on its parent with class "dropdown"*/
                 e.stopPropagation();
             });
-
-            $("html").click(function () {
-                $(".open").removeClass("open");  /*when you click out of the dropdown-menu it remove the class "open"*/
+            $("#filter").click(function () {
+                setTimeout(() => {
+                    var is_filtered = $("#s-lg-az-result-count").text().includes("for")
+                    if (is_filtered) {$("#featured-resource-list").hide()}
+                    else {$("#featured-resource-list").show()}
+                    console.log("filter: " + is_filtered)
+                }, 200);
             });
-
-            refreshOptions();
-            function refreshOptions() {
-                var [subject_labels, subject_ids] = fetchOptions("#s-lg-sel-subjects")
-                var [type_labels, type_ids] = fetchOptions("#s-lg-sel-az-types")
-                var [vendor_labels, vendor_ids] = fetchOptions("#s-lg-sel-az-vendors")
-
-                $("#filter-subject").html(optionHTML("Subject", subject_ids, subject_labels));
-                $("#filter-type").html(optionHTML("Type", type_ids, type_labels));
-                $("#filter-vendor").html(optionHTML("Vendor", vendor_ids, vendor_labels));
-                function optionHTML(category, ids, labels) {
-                    var html = ""
-                    ids.forEach(function (value, i) {
-                        var link = "<li><a href='' onclick='springSpace.publicObj.filterAzBy" + category + "(" + value + ", 26075); return false;'>" + labels[i] + "</a></li>"
-                        html += link;
-                    });
-                    return html
-                }
-                function fetchOptions(id) {
-                    var subject_labels = []
-                    var subject_ids = []
-                    $(id + " option").each(function (i, value) {
-                        subject_ids[i] = $(this).val();
-                        subject_labels[i] = $(this).text();
-                    });
-                    return [subject_labels, subject_ids]
-                }
-                return false;
-            }
         });
     </script>
     <!-- END: Content -->
-
+    
     <div id="page-footer">
         <div id="default-page-footer">
             {{system_footer}}
         </div>
         {{public_footer}}
     </div>
-    <script>
-        // Remove bootstrap navbar styling from generated filter element
-        jQuery('#az-search-col-1 nav:first').removeClass();
-        jQuery('#s-lg-az-nav-1').removeClass(); 
-    </script>
 
     <!-- Below this point is default LibGuides utilities: Popups & Alerts-->
     <div id="s-lib-alert" title="">
