@@ -9,7 +9,7 @@
     </div>
     <!-- END: Content Header -->
     <!-- BEGIN: Content -->
-    <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders ibm-plex-serif-light" tabindex="-1">
+    <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders body-font" tabindex="-1">
         
         <div id="filter">
             <div id="filter-heading">
@@ -76,9 +76,10 @@
             text-align: center;
             font: 400 64px "Libre Caslon Display", serif;
             color: var(--brand-green);
+            margin: auto 0;
         }
 
-        .ibm-plex-serif-light {
+        .body-font {
             font-family: "IBM Plex Serif", serif;
             font-weight: 300;
             font-style: normal;
@@ -88,12 +89,12 @@
         .s-lib-public-side-header h2,
         #s-lg-az-result-count {
             text-align: center;
-            font: 400 20px "IBM Plex Serif", serif;
-            border: none;
+            font: 400 30px "Libre Caslon Display", serif;
             color: var(--brand-green);
-            text-transform: uppercase;
             margin: auto 0;
+            border: none;
         }
+
         #s-lib-public-main {
             display: flex;
             flex-wrap: wrap;
@@ -107,13 +108,49 @@
 
         /* Hide featured tagline */
         #featured-resource-list #s-lg-az-popular {
-            font-size: 0px;
+            font-size: 0px;  
+            display: flex !important;
+            flex-direction: row;
+            gap: 16px;
+            overflow-x: auto;
+            border: 1px var(--brand-green-faded);
+            border-style: none solid;
+            padding: 16px 0;
         }
-        #featured-resource-list .s-lg-az-result {
+        #featured-resource-list  #s-lg-az-popular .s-lg-az-result {
             font-size: 16px;
+            width: 400px;
+            flex: 0 0 auto;
+            padding: 8px;
+            border: 1px solid var(--brand-green-faded);
+            border-radius: 8px;
+            width: 240px;
+            color: var(--brand-green);
+            height: 150px;
+            box-shadow: 0px 2px 2px var(--brand-green-faded);
+        }
+
+        .s-lg-az-result {
+            color: var(--brand-green);
+            padding: 8px;
+            border: solid var(--brand-green-faded);
+            min-height: 60px;
+            border-width: 1px 0 0 0;
+
+            & a,
+            & button {
+                font-weight: 400;
+                color: black;
+
+                &:hover {
+                    color: var(--brand-pink);
+                }
+            }
+
         }
 
         #s-lg-az-reset,
+        .fa-external-link,
         .s-lg-az-result-share,
         #featured-resource-list .s-lg-az-result-badges,
         #resource-filter .navbar-header {
@@ -122,6 +159,8 @@
 
         .s-lg-az-result-badges {
             float: right;
+            color: var(--brand-pink);
+            font-weight: 300;
         }
 
         #filter {
@@ -226,8 +265,53 @@
                     if (is_filtered) { $("#featured-resource-list").hide(); $("#resource-reset").show(); }
                     else { $("#featured-resource-list").show(); $("#resource-reset").hide(); }
                     console.log("filter: " + is_filtered)
-                }, 200);
+                }, 220);
             });
+        });
+    </script>
+     <script> // Drag to scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const ele = document.getElementById('s-lg-az-popular');
+            ele.style.cursor = 'grab';
+
+            let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+            const mouseDownHandler = function (e) {
+                ele.style.cursor = 'grabbing';
+                ele.style.userSelect = 'none';
+
+                pos = {
+                    left: ele.scrollLeft,
+                    top: ele.scrollTop,
+                    // Get the current mouse position
+                    x: e.clientX,
+                    y: e.clientY,
+                };
+
+                document.addEventListener('mousemove', mouseMoveHandler);
+                document.addEventListener('mouseup', mouseUpHandler);
+            };
+
+            const mouseMoveHandler = function (e) {
+                // How far the mouse has been moved
+                const dx = e.clientX - pos.x;
+                const dy = e.clientY - pos.y;
+
+                // Scroll the element
+                ele.scrollTop = pos.top - dy;
+                ele.scrollLeft = pos.left - dx;
+            };
+
+            const mouseUpHandler = function () {
+                ele.style.cursor = 'grab';
+                ele.style.removeProperty('user-select');
+
+                document.removeEventListener('mousemove', mouseMoveHandler);
+                document.removeEventListener('mouseup', mouseUpHandler);
+            };
+
+            // Attach the handler
+            ele.addEventListener('mousedown', mouseDownHandler);
         });
     </script>
     <!-- END: Content -->
