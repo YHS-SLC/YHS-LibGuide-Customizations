@@ -9,14 +9,14 @@
     </div>
     <!-- END: Content Header -->
     <!-- BEGIN: Content -->
-    <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
+    <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders ibm-plex-serif-light" tabindex="-1">
         
         <div id="filter">
             <div id="filter-heading">
                 <h2>
                     Filter Resources
                 </h2>
-                <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button"
+                <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" style="display: none;" type="button"
                 onclick="springSpace.azList.reset();">Clear</button>
             </div>
             <nav>
@@ -71,8 +71,28 @@
         </div>
     </div>
     <style>
-        #s-lib-public-header {
+        
+        #s-lib-public-header h1 {
             text-align: center;
+            font: 400 64px "Libre Caslon Display", serif;
+            color: var(--brand-green);
+        }
+
+        .ibm-plex-serif-light {
+            font-family: "IBM Plex Serif", serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        #filter-heading h2,
+        .s-lib-public-side-header h2,
+        #s-lg-az-result-count {
+            text-align: center;
+            font: 400 20px "IBM Plex Serif", serif;
+            border: none;
+            color: var(--brand-green);
+            text-transform: uppercase;
+            margin: auto 0;
         }
         #s-lib-public-main {
             display: flex;
@@ -84,25 +104,32 @@
             flex: 1 0 auto;
             width: 70%;
         }
-        #s-lg-az-reset {
-            display: none !important;
+
+        /* Hide featured tagline */
+        #featured-resource-list #s-lg-az-popular {
+            font-size: 0px;
         }
+        #featured-resource-list .s-lg-az-result {
+            font-size: 16px;
+        }
+
+        #s-lg-az-reset,
         .s-lg-az-result-share,
         #featured-resource-list .s-lg-az-result-badges,
         #resource-filter .navbar-header {
-            display: none;
+            display: none !important;
         }
+
         .s-lg-az-result-badges {
             float: right;
         }
+
         #filter {
             width: 25%;
             flex: 1 0 auto;
             min-width: 230px;
         }
-        #filter-heading h2 {
-            font-size: 22px;
-        }
+
         #filter-heading {
             display: inline-flex;
             justify-content: space-between;
@@ -113,10 +140,16 @@
             color: var(--brand-green);
             background-color: var(--brand-yellow);
             border: none;
+
+            &:hover {
+                color: var(--brand-white);
+                background-color: var(--brand-pink);
+            }
         }
         #filter .form-control {
             border-color: var(--brand-green-faded);
-
+            font-weight: inherit;
+            padding: 8px;
             border-radius: 0;
             border-width: 1px 0 0 0;
         }
@@ -124,6 +157,11 @@
             border-radius: 0;
             border-color: var(--brand-green-faded);
             border-width: 1px 0 0 1px;
+
+            &:hover {
+                color: var(--brand-white);
+                background-color: var(--brand-pink);
+            }
         }
         #filter li {
             list-style-type: none;
@@ -138,11 +176,12 @@
             text-decoration: none;
             color: var(--brand-green);
             border-top: 1px solid var(--brand-green-faded);
+            &:hover {
+                border-top: 1px solid var(--brand-pink);
+                color: var(--brand-pink);
+            }
         }
-        #filter a:hover {
-            border-top: 1px solid var(--brand-pink);
-            color: var(--brand-pink);
-        }
+
         #filter .dropdown-menu {
             display: none;
             position: relative;
@@ -167,7 +206,6 @@
          
         #filter option:hover {
             color: var(--brand-pink) ;
-
         }
         .s-lg-db-panel {
             margin-bottom: 0;
@@ -185,8 +223,8 @@
             $("#filter").click(function () {
                 setTimeout(() => {
                     var is_filtered = $("#s-lg-az-result-count").text().includes("for")
-                    if (is_filtered) {$("#featured-resource-list").hide()}
-                    else {$("#featured-resource-list").show()}
+                    if (is_filtered) { $("#featured-resource-list").hide(); $("#resource-reset").show(); }
+                    else { $("#featured-resource-list").show(); $("#resource-reset").hide(); }
                     console.log("filter: " + is_filtered)
                 }, 200);
             });
