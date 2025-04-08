@@ -71,16 +71,16 @@
         </div>
     </div>
     <style>
-        
+
         #s-lib-public-header h1 {
-            text-align: center;
-            font: 400 64px "Libre Caslon Display", serif;
+            font: 400 64px var(--header-font-family);
             color: var(--brand-green);
+            text-align: center;
             margin: auto 0;
         }
 
         .body-font {
-            font-family: "IBM Plex Serif", serif;
+            font-family: var(--bs-body-font-family);
             font-weight: 300;
             font-style: normal;
         }
@@ -89,7 +89,7 @@
         .s-lib-public-side-header h2,
         #s-lg-az-result-count {
             text-align: center;
-            font: 400 30px "Libre Caslon Display", serif;
+            font: 400 30px var(--header-font-family);
             color: var(--brand-green);
             margin: auto 0;
             border: none;
@@ -138,12 +138,16 @@
             border-width: 1px 0 0 0;
 
             & a,
-            & button {
-                font-weight: 400;
+            & button {    
+                
+                font-size: 16px;
+                font-weight: 500;
                 color: black;
+                text-decoration-color: rgba(0,0,0,.33);
 
                 &:hover {
                     color: var(--brand-pink);
+                    text-decoration: none;
                 }
             }
 
@@ -160,7 +164,7 @@
         .s-lg-az-result-badges {
             float: right;
             color: var(--brand-pink);
-            font-weight: 300;
+            font-weight: 400;
         }
 
         #filter {
@@ -253,7 +257,7 @@
             display: none;
         }
     </style>
-    <script>
+    <script> // Filter Dropdowns
         $(document).ready(function () {
             $("[data-toggle='dropdown']").click(function (e) {
                 $(this).parents(".dropdown").toggleClass("open");  /*when you click on an element with attr data-toggle='dropdown' it toggle the class "open" on its parent with class "dropdown"*/

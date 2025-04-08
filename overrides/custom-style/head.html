@@ -15,7 +15,9 @@ LibGuides Custom Bootstrap:
   /* Add font files for Literata */
   :root {
     /* Define palette & fonts */
-    --font-family-literata: 'Literata', sans-serif;
+    --bs-body-font-family: "IBM Plex Serif", serif;
+    --bs-body-font-weight: 300;
+    --header-font-family: "Libre Caslon Display", serif;
     --brand-white: white;
     --brand-black: black;
     --brand-yellow: rgba(243, 189, 71, 1);
@@ -23,6 +25,8 @@ LibGuides Custom Bootstrap:
     --brand-green-faded: rgba(0, 83, 46, 0.5);
     --brand-pink: rgba(242, 122, 210, 1);
   }
+
+  h1, h2, h3, h4, h5, h6 { font-family: var(--header-font-family); }
 
   /* BEGIN: Include dependencies from default LibGuide bundle */
   .hide {
@@ -285,6 +289,7 @@ LibGuides Custom Bootstrap:
   .feature-section-label>p {
     min-width: 260px;
     color: var(--brand-green);
+    text-transform: uppercase;
   }
 
   .feature-section-button {
@@ -331,7 +336,7 @@ LibGuides Custom Bootstrap:
     width: 240px;
     color: var(--brand-green);
     height: 500px;
-    box-shadow: 0px 3px 3px var(--brand-green-faded);
+    box-shadow: 0px 2px 2px var(--brand-green-faded);
   }
 
   .carousel-card-image {
@@ -342,10 +347,11 @@ LibGuides Custom Bootstrap:
 
   .carousel-card-title {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--brand-black);
     line-height: 140%;
     padding: 8px 0px;
+    font-family: var(--bs-body-font-family);
   }
 
   /*Date*/
