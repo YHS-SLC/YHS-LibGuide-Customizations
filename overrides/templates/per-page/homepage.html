@@ -91,7 +91,7 @@
                             success: function (response) {
                                 imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/|\"|\')/g, "_") + ".jpg"
                                 image = `<img class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
-                                title = "<h3 class='carousel-card-title'>" + titleList[index].substring(1) + "</h2>"
+                                
                                 noNewlines = response.replace(/(?:\\n)/g, '');
                                 fixElements = noNewlines.replace(/(?:\\\/)/g, '/');
                                 fixLinks = fixElements.replace(/(?:\\\"\/|\\\")/g, '');
@@ -100,8 +100,11 @@
                                     cutStyle.indexOf("-->") + 3,
                                     cutStyle.lastIndexOf("<span>")
                                 );
-                                forceNewWindow = cutHeader.replace(/window\.location\.href='(.*)'/g, "window.open('$1','_blank')").replace(/<a/g, "<a target=_blank")
+                                forceNewWindow = cutHeader.replace(/<a/g, "<a target=_blank")
                                 replaceLabels = forceNewWindow.replace("Go to Guide", buttonText).replace("Subjects:", "").replace("Posts: ", "").replace("Assignments: ", "").replace("_In Progress", "In Progress")
+                                link_regular_expression = /window\.location\.href='(.*)'/g
+                                link = link_regular_expression.exec(cutHeader)[1];
+                                title = "<h3 class='carousel-card-title'><a target='_blank' href='" + link + "'>" + titleList[index].substring(1) + "</a></h3>"
                                 html[index] = "<div class='carousel-card'>" + image + title + replaceLabels + "</div></div></div>";
                             }
                         });
