@@ -16,7 +16,7 @@
                 <h2>
                     Filter Resources
                 </h2>
-                <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" style="display: none;" type="button"
+                <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button"
                 onclick="springSpace.azList.reset();">Clear</button>
             </div>
             <nav>
@@ -266,9 +266,8 @@
             $("#filter").click(function () {
                 setTimeout(() => {
                     var is_filtered = $("#s-lg-az-result-count").text().includes("for")
-                    if (is_filtered) { $("#featured-resource-list").hide(); $("#resource-reset").show(); }
-                    else { $("#featured-resource-list").show(); $("#resource-reset").hide(); }
-                    console.log("filter: " + is_filtered)
+                    if (is_filtered) { $("#featured-resource-list").hide(); }
+                    else { $("#featured-resource-list").show(); }
                 }, 220);
             });
         });
