@@ -185,46 +185,61 @@ LibGuides Custom Bootstrap:
   .navbar-brand-logo {
     /* Scale Brand Logo */
     height: 3rem;
+    &:hover {
+      filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
+    }
   }
 
-  .navbar-brand-caption {
+  .navbar-home-link {
     /* Style Brand Text */
     font-size: .7rem;
     line-height: .7rem;
     font-weight: 400;
     text-transform: uppercase;
+    text-decoration: none;
   }
-  .navbar-expand-xl {
+  
+  #site-header {
     background-color: var(--brand-green);
   }
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
   }
-  .navbar-expand-xl .dropdown-menu {
+  #site-header .dropdown-menu {
     background-color: var(--brand-green);
   }
-  .navbar-expand-xl a,
-  .navbar-expand-xl span {
+  #site-header a,
+  #site-header span {
     color: white;
     &:active,
     &:focus,
     &:hover {
       color: var(--brand-pink);
       background-color: var(--brand-green);
+      text-shadow: 1px 0 0 var(--brand-pink);
     } 
   }
   @media (min-width: 1200px) {
-    .navbar-expand-xl .navbar-nav {
+    #site-header .navbar-nav {
       flex-direction: row;
       margin: auto;
       margin-right: auto;
       margin-bottom: auto;
     }
   }
+
+  #site-header input {
+    color: var(--brand-green);
+
+      &::placeholder{
+      color: var(--brand-green-faded);
+    }
+  }
   /* END: Navbar */
 
   /* BEGIN: Custom Tweaks */
-  a:focus {
+  /* Remove the blue outline around clicked items. */
+  a:focus { 
     outline: none;
   }
 
@@ -293,10 +308,8 @@ LibGuides Custom Bootstrap:
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width: calc(100% - 32px);
-    /* Fill minus margin */
+    width: 100%;
     height: 500px;
-    margin: 16px;
   }
 
   .hero-section img {
@@ -387,6 +400,16 @@ LibGuides Custom Bootstrap:
       background-color: var(--brand-pink);
     }
   }
+
+  @media (max-width: 556px) {
+    .feature-section-label {
+      text-align: center;
+    } 
+    .feature-section-button {
+      max-width: 100%;
+    }
+  }
+
   .feature-container {
     display: flex;
     flex-wrap: nowrap;
