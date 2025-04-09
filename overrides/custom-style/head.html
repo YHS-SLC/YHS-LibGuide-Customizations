@@ -161,12 +161,7 @@ LibGuides Custom Bootstrap:
 
   /* END: Include dependencies from default LibGuide bundle */
 
-  /* BEGIN: Styling Fixes */
-  select.form-control {
-    /* Fix form select inputs */
-    padding: .5rem .75rem 2rem .75rem
-  }
-
+  /* BEGIN: Navbar */
   .navbar-collapse,
   body,
   .navbar-brand {
@@ -174,9 +169,6 @@ LibGuides Custom Bootstrap:
     padding: 0;
   }
 
-  /* END: Styling Fixes */
-
-  /* BEGIN: Custom Tweaks */
   .navbar-brand {
     /* Place logo & text side by side */
     display: flex;
@@ -194,8 +186,41 @@ LibGuides Custom Bootstrap:
     /* Style Brand Text */
     font-size: .7rem;
     line-height: .7rem;
-    font-weight: bold;
+    font-weight: 400;
     text-transform: uppercase;
+  }
+  .navbar-expand-xl {
+    background-color: var(--brand-green);
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+  }
+  .navbar-expand-xl .dropdown-menu {
+    background-color: var(--brand-green);
+  }
+  .navbar-expand-xl a,
+  .navbar-expand-xl span {
+    color: white;
+    &:active,
+    &:focus,
+    &:hover {
+      color: var(--brand-pink);
+      background-color: var(--brand-green);
+    } 
+  }
+  @media (min-width: 1200px) {
+    .navbar-expand-xl .navbar-nav {
+      flex-direction: row;
+      margin: auto;
+      margin-right: auto;
+      margin-bottom: auto;
+    }
+  }
+  /* END: Navbar */
+
+  /* BEGIN: Custom Tweaks */
+  a:focus {
+    outline: none;
   }
 
   /* Scale down profile image - Phillip's request */
