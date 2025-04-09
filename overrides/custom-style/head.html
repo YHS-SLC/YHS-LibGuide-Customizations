@@ -28,18 +28,6 @@ LibGuides Custom Bootstrap:
 
   h1, h2, h3, h4, h5, h6 { font-family: var(--header-font-family); }
 
-  a {
-    font-size: 16px;
-    font-weight: 500;
-    color: black;
-    text-decoration-color: rgba(0, 0, 0, .33);
-
-    &:hover {
-        color: var(--brand-pink);
-        text-decoration: none;
-    }
-  }
-
   /* BEGIN: Include dependencies from default LibGuide bundle */
   .hide {
     display: none;
@@ -162,11 +150,28 @@ LibGuides Custom Bootstrap:
   /* END: Include dependencies from default LibGuide bundle */
 
   /* BEGIN: Navbar */
+  #site-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+  }
+  #page-content {
+    padding-top: 64px;
+  }
+  
   .navbar-collapse,
   body,
   .navbar-brand {
     /* Remove default LibGuides padding */
     padding: 0;
+  }
+  
+  @media (min-width: 1200px) {
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      margin-top: 0; /* remove the gap so it doesn't close */
+    }
   }
 
   .navbar-brand {
@@ -232,7 +237,10 @@ LibGuides Custom Bootstrap:
   .s-lib-box-title {
     display: none;
   }
-
+  /* Restyle Subject anchor */
+  .s-lg-gtitle a.bold{
+    font-weight: 500;
+  }
   /* Reformat google embeds to display properly. */
   .s-lg-widget>iframe {
     margin: auto !important;
@@ -247,6 +255,35 @@ LibGuides Custom Bootstrap:
     }
   }
 
+  /* Guide Tabs - remove underline */
+  #s-lg-tabs-container .nav-tabs > li > a {
+    text-decoration: none;
+  }
+  
+  /* Subject list links */
+  .s-lg-gtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--brand-black);
+    line-height: 140%;
+    padding: 8px 0px;
+    font-family: var(--bs-body-font-family);
+    & a {
+      font-size: 16px;
+      font-weight: 500;
+      color: black;
+      text-decoration-color: rgba(0, 0, 0, .33);
+
+      &:hover {
+          color: var(--brand-pink);
+          text-decoration: none;
+      }
+    }
+  }
+  #s-lg-sb-guides .pull-left,
+  #s-lg-sb-databases .pull-left {
+    float: none !important;
+  }
   /* END: Custom Tweaks*/
 
 
@@ -350,7 +387,6 @@ LibGuides Custom Bootstrap:
       background-color: var(--brand-pink);
     }
   }
-
   .feature-container {
     display: flex;
     flex-wrap: nowrap;
@@ -389,6 +425,17 @@ LibGuides Custom Bootstrap:
     line-height: 140%;
     padding: 8px 0px;
     font-family: var(--bs-body-font-family);
+    & a {
+      font-size: 16px;
+      font-weight: 500;
+      color: black;
+      text-decoration-color: rgba(0, 0, 0, .33);
+
+      &:hover {
+          color: var(--brand-pink);
+          text-decoration: none;
+      }
+    }
   }
 
   /*Date*/

@@ -1,86 +1,78 @@
 <body class="s-lib-public-body">
-    {{skip_link}}
-    <!-- BEGIN: Page Header -->
-    {{public_header}}
-    <!-- END: Page Header -->
-    <!-- BEGIN: Content Header -->
-    <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
-        <h1 id="s-lib-public-header-title">{{page_title}}</h1>
-        <!--<div id="s-lib-public-header-desc">{{page_description}}</div>-->
-    </div>
-    <!-- END: Content Header -->
-    <!-- BEGIN: Nav Bar -->
-    <div id="s-lib-public-nav" class="container s-lib-side-borders">
-        {{page_nav}}
-    </div>
-    <!-- END: Nav Bar -->
-    <!-- BEGIN: content -->
-    <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-        <div id="s-lg-sb-guides">
-            <div id="s-lg-sb-content-guides"></div>
+    <div id="site-header">{{public_header}}</div>
+    <div id="page-content">
+        <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
+            <h1 id="s-lib-public-header-title">{{page_title}}</h1>
+            <!--<div id="s-lib-public-header-desc">{{page_description}}</div>-->
         </div>
-        <div id="s-lg-sb-databases">
-            <div id="s-lg-sb-content-databases"></div>
+        <div id="s-lib-public-nav" class="container s-lib-side-borders">
+            {{page_nav}}
         </div>
-    </div>
-    <!-- END: content -->
-    <div id="page-footer">
-        <div id="default-page-footer">
-            {{system_footer}}
+        <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
+            <div id="s-lg-sb-guides">
+                <div id="s-lg-sb-content-guides"></div>
+            </div>
+            <div id="s-lg-sb-databases">
+                <div id="s-lg-sb-content-databases"></div>
+            </div>
         </div>
-        {{public_footer}}
-    </div>
-
-    <script>  // Remove special char prefix from title display
-        document.addEventListener('DOMContentLoaded', function () {
-            jQuery('.s-lg-gtitle a').each(function (i, obj) {
-                console.log("AA")
-                var title = $(this).text()
-                if (title.charAt(0) == "*" || title.charAt(0) == "!") {
-                    $(this).text(title.substring(1));
-                }
-            });
-        });
-        $(window).on('load', function () {
-            (function myLoop(i) {
-                setTimeout(function () {
-                    console.log("looping...")
-                    if (trimTitle()) { return; }
-                    else if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0
-                }, 20)
-            })(10);                   //  pass the number of iterations as an argument
-            function trimTitle() {
-                var foundContent = false
+        <script>  // Remove special char prefix from title display
+            document.addEventListener('DOMContentLoaded', function () {
                 jQuery('.s-lg-gtitle a').each(function (i, obj) {
-                    foundContent = true
                     console.log("AA")
                     var title = $(this).text()
                     if (title.charAt(0) == "*" || title.charAt(0) == "!") {
                         $(this).text(title.substring(1));
                     }
                 });
-                return foundContent
-            }
-        });
-    </script>
-
-    <!-- Below this point is default LibGuides utilities: Popups & Alerts-->
-    <div id="s-lib-alert" title="">
-        <div id="s-lib-alert-content"></div>
+            });
+            $(window).on('load', function () {
+                (function myLoop(i) {
+                    setTimeout(function () {
+                        console.log("looping...")
+                        if (trimTitle()) { return; }
+                        else if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0
+                    }, 20)
+                })(10);                   //  pass the number of iterations as an argument
+                function trimTitle() {
+                    var foundContent = false
+                    jQuery('.s-lg-gtitle a').each(function (i, obj) {
+                        foundContent = true
+                        console.log("AA")
+                        var title = $(this).text()
+                        if (title.charAt(0) == "*" || title.charAt(0) == "!") {
+                            $(this).text(title.substring(1));
+                        }
+                    });
+                    return foundContent
+                }
+            });
+        </script>
     </div>
-    <!-- popover.twig -->
-    <div id="s-lib-popover-title" class="hide">
-        <span class="text-info">
-            <strong>title</strong>
-        </span>
-
-        <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
-            &times;
-        </button>
+    <div id="page-footer">
+        <div id="default-page-footer">
+            {{system_footer}}
+        </div>
+        {{public_footer}}
     </div>
-    <div id="s-lib-popover-content" class="hide">
-        <i class="fa fa-refresh fa-spin"></i> Loading...
-        <button class="btn btn-default btn-sm popclose" type="button">Close</button>
+    <div id="default-libguide-utilities">
+        <div id="s-lib-alert" title="">
+            <div id="s-lib-alert-content"></div>
+        </div>
+        <!-- popover.twig -->
+        <div id="s-lib-popover-title" class="hide">
+            <span class="text-info">
+                <strong>title</strong>
+            </span>
+    
+            <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
+                &times;
+            </button>
+        </div>
+        <div id="s-lib-popover-content" class="hide">
+            <i class="fa fa-refresh fa-spin"></i> Loading...
+            <button class="btn btn-default btn-sm popclose" type="button">Close</button>
+        </div>
+        <!-- !popover.twig -->
     </div>
-    <!-- !popover.twig -->
 </body>

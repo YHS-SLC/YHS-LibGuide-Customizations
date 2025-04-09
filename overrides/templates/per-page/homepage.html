@@ -217,24 +217,24 @@
         </div>
         {{public_footer}}
     </div>
-
-    <!-- Below this point is default LibGuides utilities: Popups & Scroll to Top.-->
-    <div id="s-lib-alert" title="">
-        <div id="s-lib-alert-content"></div>
+    <div id="default-libguide-utilities">
+        <div id="s-lib-alert" title="">
+            <div id="s-lib-alert-content"></div>
+        </div>
+        <!-- popover.twig -->
+        <div id="s-lib-popover-title" class="hide">
+            <span class="text-info">
+                <strong>title</strong>
+            </span>
+    
+            <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
+                &times;
+            </button>
+        </div>
+        <div id="s-lib-popover-content" class="hide">
+            <i class="fa fa-refresh fa-spin"></i> Loading...
+            <button class="btn btn-default btn-sm popclose" type="button">Close</button>
+        </div>
+        <!-- !popover.twig -->
     </div>
-    <!-- popover.twig -->
-    <div id="s-lib-popover-title" class="hide">
-        <span class="text-info">
-            <strong>title</strong>
-        </span>
-
-        <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
-            &times;
-        </button>
-    </div>
-    <div id="s-lib-popover-content" class="hide">
-        <i class="fa fa-refresh fa-spin"></i> Loading...
-        <button class="btn btn-default btn-sm popclose" type="button">Close</button>
-    </div>
-    <!-- !popover.twig -->
 </body>

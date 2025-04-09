@@ -1,61 +1,55 @@
 <body class="s-lib-public-body">
     {{skip_link}}
-    <!-- BEGIN: Page Header -->
-    {{public_header}}
-    <!-- END: Page Header -->
-    <!-- BEGIN: Content Header -->
-    <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
-        <h1 id="s-lib-public-header-title">{{page_title}}</h1>
-        <div id="s-lib-public-header-desc">{{page_description}}</div>
-    </div>
-    <!-- END: Content Header -->
-    <!-- BEGIN: Nav Bar -->
-    <div id="s-lib-public-nav" class="container s-lib-side-borders">
-        {{page_nav}}
-    </div>
-    <!-- END: Nav Bar -->
-    <!-- BEGIN: content -->
-    <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-        <section aria-label="Profile Content">
-            <div id="s-lg-profile-cols" class="row">
-                <div id="col1" class="col-md-3 center">
-                    {{profile_box}}
+    <div id="site-header">{{public_header}}</div>
+    <div id="page-content">
+        <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
+            <h1 id="s-lib-public-header-title">{{page_title}}</h1>
+            <div id="s-lib-public-header-desc">{{page_description}}</div>
+        </div>
+        <div id="s-lib-public-nav" class="container s-lib-side-borders">
+            {{page_nav}}
+        </div>
+        <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
+            <section aria-label="Profile Content">
+                <div id="s-lg-profile-cols" class="row">
+                    <div id="col1" class="col-md-3 center">
+                        {{profile_box}}
+                    </div>
+                    <div id="col2" class="col-md-6 center">
+                        {{personal_statement}}
+                        {{guide_list}}
+                    </div>
+                    <div id="col3" class="col-md-3 center">
+                        {{content_box_specialties}}
+                    </div>
                 </div>
-                <div id="col2" class="col-md-6 center">
-                    {{personal_statement}}
-                    {{guide_list}}
-                </div>
-                <div id="col3" class="col-md-3 center">
-                    {{content_box_specialties}}
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-    <!-- END: content -->
     <div id="page-footer">
         <div id="default-page-footer">
             {{system_footer}}
         </div>
         {{public_footer}}
     </div>
-
-    <!-- Below this point is default LibGuides utilities: Popups & Alerts-->
-    <div id="s-lib-alert" title="">
-        <div id="s-lib-alert-content"></div>
+    <div id="default-libguide-utilities">
+        <div id="s-lib-alert" title="">
+            <div id="s-lib-alert-content"></div>
+        </div>
+        <!-- popover.twig -->
+        <div id="s-lib-popover-title" class="hide">
+            <span class="text-info">
+                <strong>title</strong>
+            </span>
+    
+            <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
+                &times;
+            </button>
+        </div>
+        <div id="s-lib-popover-content" class="hide">
+            <i class="fa fa-refresh fa-spin"></i> Loading...
+            <button class="btn btn-default btn-sm popclose" type="button">Close</button>
+        </div>
+        <!-- !popover.twig -->
     </div>
-    <!-- popover.twig -->
-    <div id="s-lib-popover-title" class="hide">
-        <span class="text-info">
-            <strong>title</strong>
-        </span>
-
-        <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
-            &times;
-        </button>
-    </div>
-    <div id="s-lib-popover-content" class="hide">
-        <i class="fa fa-refresh fa-spin"></i> Loading...
-        <button class="btn btn-default btn-sm popclose" type="button">Close</button>
-    </div>
-    <!-- !popover.twig -->
 </body>

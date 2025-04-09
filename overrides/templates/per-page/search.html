@@ -1,71 +1,63 @@
 <body class="s-lib-public-body">
     {{skip_link}}
-    <!-- BEGIN: Page Header -->
-    {{public_header}}
-    <!-- END: Page Header -->
-    <!-- BEGIN: Content Header -->
-    <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
-        <h1 id="s-lib-public-header-title">{{page_title}}
-        </h1>
-        <div id="s-lib-public-header-desc">{{page_description}}
+    <div id="site-header">{{public_header}}</div>
+    <div id="page-content">
+        <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
+            <h1 id="s-lib-public-header-title">{{page_title}}
+            </h1>
+            <div id="s-lib-public-header-desc">{{page_description}}
+            </div>
         </div>
-    </div>
-    <!-- END: Content Header -->
-    <!-- BEGIN: Nav Bar -->
-    <div id="s-lib-public-nav" class="container s-lib-side-borders">
-        {{page_nav}}
-    </div>
-    <!-- END: Nav Bar -->
-    <!-- BEGIN: content -->
-    <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-        <section>
-            <div id="s-lg-srch-nav-col" class="row">
-                <div id="col0" class="col-md-12 center">
-                    {{content_box_search}}
+        <div id="s-lib-public-nav" class="container s-lib-side-borders">
+            {{page_nav}}
+        </div>
+        <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
+            <section>
+                <div id="s-lg-srch-nav-col" class="row">
+                    <div id="col0" class="col-md-12 center">
+                        {{content_box_search}}
+                    </div>
+                    <div id="s-lg-srch-results-msg" class="col-md-12 margin-bottom-sm"></div>
                 </div>
-                <div id="s-lg-srch-results-msg" class="col-md-12 margin-bottom-sm"></div>
-            </div>
-        </section>
-        <section>
-            <div id="s-lg-srch-cols" class="row">
-                {{content}}
-            </div>
-        </section>
-    </div>
-    <!-- END: content -->
+            </section>
+            <section>
+                <div id="s-lg-srch-cols" class="row">
+                    {{content}}
+                </div>
+            </section>
+        </div>
 
-    <!-- END: content -->
+        <script>
+            // Remove bootstrap navbar styling from generated filter element
+            jQuery('#s-lg-srch-local .navbar-header:first').remove();
+            jQuery('#s-lg-srch-local nav:first').removeClass();
+            jQuery('#s-lg-srch-nav-1').removeClass(); 
+        </script>
+    </div>
     <div id="page-footer">
         <div id="default-page-footer">
             {{system_footer}}
         </div>
         {{public_footer}}
     </div>
-
-    <script>
-        // Remove bootstrap navbar styling from generated filter element
-        jQuery('#s-lg-srch-local .navbar-header:first').remove();
-        jQuery('#s-lg-srch-local nav:first').removeClass();
-        jQuery('#s-lg-srch-nav-1').removeClass(); 
-    </script>
+    <div id="default-libguide-utilities">
+        <div id="s-lib-alert" title="">
+            <div id="s-lib-alert-content"></div>
+        </div>
+        <!-- popover.twig -->
+        <div id="s-lib-popover-title" class="hide">
+            <span class="text-info">
+                <strong>title</strong>
+            </span>
     
-    <!-- Below this point is default LibGuides utilities: Popups & Alerts-->
-    <div id="s-lib-alert" title="">
-        <div id="s-lib-alert-content"></div>
+            <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
+                &times;
+            </button>
+        </div>
+        <div id="s-lib-popover-content" class="hide">
+            <i class="fa fa-refresh fa-spin"></i> Loading...
+            <button class="btn btn-default btn-sm popclose" type="button">Close</button>
+        </div>
+        <!-- !popover.twig -->
     </div>
-    <!-- popover.twig -->
-    <div id="s-lib-popover-title" class="hide">
-        <span class="text-info">
-            <strong>title</strong>
-        </span>
-
-        <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
-            &times;
-        </button>
-    </div>
-    <div id="s-lib-popover-content" class="hide">
-        <i class="fa fa-refresh fa-spin"></i> Loading...
-        <button class="btn btn-default btn-sm popclose" type="button">Close</button>
-    </div>
-    <!-- !popover.twig -->
 </body>
