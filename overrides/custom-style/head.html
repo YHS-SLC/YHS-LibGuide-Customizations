@@ -154,8 +154,9 @@ LibGuides Custom Bootstrap:
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1;
+    z-index: 2;
   }
+  
   #page-content {
     padding-top: 64px;
   }
@@ -247,7 +248,16 @@ LibGuides Custom Bootstrap:
   .s-lib-profile-image>img {
     width: 25%;
   }
-
+  /* Restyle profile email buttons */
+  .s-lib-profile-email .label-info {
+    color:var(--brand-green);
+    background-color: transparent !important;
+    &:hover,
+    &:active,
+    &:focus{
+      color: var(--brand-pink);
+    }
+  }
   /* Remove tiny box title - Phillip's request */
   .s-lib-box-title {
     display: none;

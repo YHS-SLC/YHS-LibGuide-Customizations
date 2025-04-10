@@ -259,6 +259,9 @@
                 padding: 5px;
             }
     
+            #filter select {
+                z-index: 1;
+            }
             #filter option:active,
             #filter option:checked {
                 color: white;
@@ -364,4 +367,56 @@
         </div>
         <!-- !popover.twig -->
     </div>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            prependImages();
+        });
+        const observeUrlChange = () => {
+        let oldHref = document.location.href;
+        const body = document.querySelector('body');
+        const observer = new MutationObserver(mutations => {
+            if (oldHref !== document.location.href) {
+            oldHref = document.location.href;
+            /* Changed ! your code here */
+            prependImages();
+            }
+        });
+        observer.observe(body, { childList: true, subtree: true });
+        };
+
+        function prependImages(){
+            var image_array = []
+            $(".s-lg-az-result a").each(function (i, elem) {
+                var title = $(this).text().trim();
+                var imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + title.replace(/( |\/|\"|\')/g, "_") + ".jpg"
+                var image = `<img class="resource-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="48"height="48">`
+                image_array.push(image)
+            });
+            $(".s-lg-az-result:not(:has(.resource-card-image))").each(function (i, elem) {
+                $(this).prepend(image_array[i])
+            });
+        }
+        window.onload = observeUrlChange;
+    </script>
+    <style>
+        #featured-resource-list .s-lg-az-result-title {
+            display: inline-block;
+            text-align: center;
+            width: calc(100% - 78px);
+        }
+        #resource-list .s-lg-az-result-title {
+            vertical-align: top;
+            display: inline-block;
+            width: 0;
+            margin: 0;
+            white-space: nowrap;
+        }
+        .s-lg-az-result-description {
+            display: inline-block;
+            vertical-align: bottom; 
+        }
+        .resource-card-image {
+            object-fit: cover;
+        }
+    </style> -->
 </body>
