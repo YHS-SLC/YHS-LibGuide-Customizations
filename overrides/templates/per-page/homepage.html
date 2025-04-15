@@ -59,7 +59,7 @@
                     }, 20)
                 })(10);                   //  pass the number of iterations as an argument
                 function getCards(selector, buttonText, outputQuery) {
-                    // 1. jQuery grabs featured list elements.
+                    // 1. iterate over default "all guides" list sorted by recency, selecting items starting with "selector" character
                     output = $('.s-lib-box-idx-guide-list .s-lg-gtitle.s-lib-color-lt-grey').filter(function (index) {
                         return $(this).find('a').text().charAt(0) == selector;
                     });
@@ -69,18 +69,19 @@
                         return false;
                     }
 
-                    // 2. Extract links from them.
+                    // 2. Extract "more information" links from each item
                     var titleList = Array(output.length)
                     output.find('a').each(function (i, value) {
                         titleList[i] = $(this).text().replace(/(\r\n|\n|\r)/gm, "").replace(/\s+/g, ' ');
                     });
-                    // 3. Extract php requests from them.
+
+                    // 3. Extract php requests from each link.
                     var phpList = Array(titleList.length)
                     output.find('button').each(function (i, value) {
                         phpList[i] = $(this).attr('data-ajload');
                     });
 
-                    // 4. Process php response as html.
+                    // 4. Request php "more information" response for each link as html.
                     var html = Array(phpList.length);
                     var allAJAX = phpList.map((link, index) => {
                         return $.ajax({
@@ -90,7 +91,6 @@
                             success: function (response) {
                                 imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/|\"|\'|\&)/g, "_") + ".jpg"
                                 image = `<img class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
-                                
                                 noNewlines = response.replace(/(?:\\n)/g, '');
                                 fixElements = noNewlines.replace(/(?:\\\/)/g, '/');
                                 fixLinks = fixElements.replace(/(?:\\\"\/|\\\")/g, '');
@@ -100,7 +100,7 @@
                                     cutStyle.lastIndexOf("<span>")
                                 );
                                 forceNewWindow = cutHeader.replace(/<a/g, "<a target=_blank")
-                                replaceLabels = forceNewWindow.replace("Go to Guide", buttonText).replace("Subjects:", "").replace("Posts: ", "").replace("Assignments: ", "").replace("_In Progress", "In Progress")
+                                replaceLabels = forceNewWindow.replace("Go to Guide", buttonText).replace("Subjects:", "").replace("Collaboration: ", "").replace("Posts: ", "")
                                 link_regular_expression = /window\.location\.href='(.*)'/g
                                 link = link_regular_expression.exec(cutHeader)[1];
                                 title = "<h3 class='carousel-card-title'><a target='_blank' href='" + link + "'>" + titleList[index].substring(1) + "</a></h3>"
@@ -108,6 +108,8 @@
                             }
                         });
                     });
+
+                    // 5. Append results to featured section
                     Promise.all(allAJAX).then(function () {
                         html.forEach((element) => 
                             $(outputQuery).append(element)
@@ -166,7 +168,6 @@
                 }
             });
         </script>
-
         <div class="resource-hero">
             <div class="resource-hero-text-container">
                 <div>
