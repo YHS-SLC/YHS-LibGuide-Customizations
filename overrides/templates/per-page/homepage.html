@@ -18,9 +18,8 @@
                 src="https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Library_-_Crystalize.jpg"
                 alt="hero-basic" />
             <div class="hero-section-text-container">
-                <p class="hero-section-large-text">Welcome,</p>
                 <p class="hero-section-medium-text">{{title}}</p>
-                <p class="hero-section-small-text">{{system_intro}}</p>
+                <p class="hero-section-large-text">{{system_intro}}</p>
             </div>
         </div>
         <div class="feature-section">
@@ -89,7 +88,7 @@
                             url: link,
                             async: true,
                             success: function (response) {
-                                imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/|\"|\')/g, "_") + ".jpg"
+                                imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + titleList[index].substring(1).replace(/( |\/|\"|\'|\&)/g, "_") + ".jpg"
                                 image = `<img class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
                                 
                                 noNewlines = response.replace(/(?:\\n)/g, '');

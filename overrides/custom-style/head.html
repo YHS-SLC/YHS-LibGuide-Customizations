@@ -319,7 +319,7 @@ LibGuides Custom Bootstrap:
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    height: 500px;
+    height: 300px;
   }
 
   .hero-section img {
@@ -339,8 +339,7 @@ LibGuides Custom Bootstrap:
     padding: 2.5vw 5vw;
     flex: 0 0 auto;
     width: 100%;
-    height: 500px;
-    box-shadow: inset 400px 0px 400px rgba(0, 0, 0, .5);
+    height: 300px;
   }
 
   .hero-section-large-text {
@@ -361,6 +360,7 @@ LibGuides Custom Bootstrap:
 
   .hero-section p {
     color: var(--brand-white);
+    text-shadow: 0px 0px 4px #000;
   }
 
   /* END: Homepage Hero */
@@ -441,7 +441,7 @@ LibGuides Custom Bootstrap:
     border-radius: 8px;
     width: 240px;
     color: var(--brand-green);
-    height: 450px;
+    height: 416px;
     box-shadow: 0px 2px 2px var(--brand-green-faded);
   }
 
@@ -473,13 +473,15 @@ LibGuides Custom Bootstrap:
 
   /*Date*/
   .carousel-card .s-lib-color-lt-grey {
+    display: none !important;
+    /*
     color: var(--brand-green);
 
     & .fa {
-      /*Remove unused element*/
       display: none !important;
-    }
+    }*/
   }
+
   /* Views */
   .carousel-card .pad-left-med {
     display: none;
