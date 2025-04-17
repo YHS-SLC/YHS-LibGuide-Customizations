@@ -51,14 +51,14 @@
                 (function myLoop(i) {
                     setTimeout(function () {
                         console.log("looping...")
-                        if (getCards("*", "View Assignment", "#featured-assignments")) {
-                            getCards("!", "View Post", "#featured-guides")
+                        if (getCards("*", "#featured-assignments")) {
+                            getCards("!", "#featured-guides")
                             return;
                         }
                         else if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0
                     }, 20)
                 })(10);                   //  pass the number of iterations as an argument
-                function getCards(selector, buttonText, outputQuery) {
+                function getCards(selector, outputQuery) {
                     // 1. iterate over default "all guides" list sorted by recency, selecting items starting with "selector" character
                     output = $('.s-lib-box-idx-guide-list .s-lg-gtitle.s-lib-color-lt-grey').filter(function (index) {
                         return $(this).find('a').text().charAt(0) == selector;
@@ -99,12 +99,14 @@
                                     cutStyle.indexOf("-->") + 3,
                                     cutStyle.lastIndexOf("<span>")
                                 );
-                                forceNewWindow = cutHeader.replace(/<a/g, "<a target=_blank")
-                                replaceLabels = forceNewWindow.replace("Go to Guide", buttonText).replace("Subjects:", "").replace("Collaboration: ", "").replace("Posts: ", "")
+                                removeDelinator = cutHeader.replace(/<\/a>,/g, '</a>') /* Remove commas seperating each subject */
+                                removeTopLevelPrefix = removeDelinator.replace(/\>[A-Za-z0-9]+?\: /g, '>') /* Remove the top-level prefix from sub-level headings (e.g. "Posts: How To" becomes "How To" */
+                                removeTopLevelSubjects = removeTopLevelPrefix.replace(/<a.{20,50}>Collaboration<\/a>/g,"").replace(/<a.{20,50}>Posts<\/a>/g,"") /* Remove the two top-level headings (e.g. "Posts" is removed) */
+                                forceNewWindow = removeTopLevelSubjects.replace(/<a/g, "<a target=_blank")
                                 link_regular_expression = /window\.location\.href='(.*)'/g
                                 link = link_regular_expression.exec(cutHeader)[1];
                                 title = "<h3 class='carousel-card-title'><a target='_blank' href='" + link + "'>" + titleList[index].substring(1) + "</a></h3>"
-                                html[index] = "<div class='carousel-card'>" + image + title + replaceLabels + "</div></div></div>";
+                                html[index] = "<div class='carousel-card'>" + image + title + forceNewWindow + "</div></div></div>";
                             }
                         });
                     });
