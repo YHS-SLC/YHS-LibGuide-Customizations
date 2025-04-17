@@ -6,23 +6,23 @@
         }
     </script>
     <div id="site-header">{{public_header}}</div>
-    <div id="page-content">
+    <div id="page-content" class="homepage">
         <div id="page-navigation-bar">{{page_nav}}</div>
         <div id="s-lg-index-list" style="display:none">
             <!-- Need content to be inside a div with this ID. It breaks otherwise. -->
             {{content}}
         </div>
 
-        <div class="hero-section">
-            <div class="hero-section-title-container">
-                <img class="hero-section-title-img" src="https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/pink_yellow_thick_overlay_trimmed.png">
-                <div class="hero-section-text-container">
-                    <p class="hero-section-medium-text">{{title}}</p>
-                    <p class="hero-section-large-text">{{system_intro}}</p>
+        <div id="homepage-hero">
+            <div class="title-container">
+                <img class="title-bookends" src="https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/pink_yellow_thick_overlay_trimmed.png">
+                <div class="title-text">
+                    <h1>{{title}}</h1>
+                    <h2>{{system_intro}}</h2>
                 </div>
-                <img class="hero-section-title-img" src="https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/pink_yellow_thick_overlay_trimmed.png">
+                <img class="title-bookends" src="https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/pink_yellow_thick_overlay_trimmed.png">
             </div>
-            <img class="hero-section-image"
+            <img class="hero-image"
             src="https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Library_-_Crystalize.jpg"
             alt="hero-basic" />
         </div>
@@ -32,7 +32,7 @@
                     <h2>Collaboration Updates</h2>
                     <p>Assignments, Clubs & More</p>
                 </div>
-                <a class="feature-section-button" href="/collaboration" target="_blank">
+                <a href="/collaboration" target="_blank">
                     Browse Collaboration
                 </a>
             </div>
@@ -174,8 +174,8 @@
                 }
             });
         </script>
-        <div class="resource-hero">
-            <div class="resource-hero-text-container">
+        <div id="homepage-resource-hero">
+            <div class="text-container">
                 <div>
                     <h3>Learn & Unwind</h3>
                     <p>
@@ -185,11 +185,11 @@
                         and over 9000 books!
                     </p>
                 </div>
-                <a class="resource-hero-button" href="/az.php" target="_blank">
+                <a href="/az.php" target="_blank">
                     Explore Our Resources!
                 </a>
             </div>
-            <div class="resource-hero-visual-container">
+            <div class="visual-container">
                 <video class="resource-hero-visual" width="256" height="256" preload="metadata"
                     style="background: black  url('https://cdn-icons-png.flaticon.com/512/15577/15577943.png') 50% 50% / fit no-repeat;"
                     loop="true" muted="muted" playsinline="">
@@ -200,24 +200,21 @@
             </div>
         </div>
         <script> /* Animate hero visual on hover */
-            const hero = document.querySelectorAll('.resource-hero');
+            const hero = document.getElementById('homepage-resource-hero');
+            var video = hero.getElementsByClassName("resource-hero-visual")[0]
 
-            hero.forEach(hero => {
-                var video = hero.getElementsByClassName("resource-hero-visual")[0]
+            hero.addEventListener('mouseenter', () => {
+                video.play();
+            });
 
-                hero.addEventListener('mouseenter', () => {
-                    video.play();
-                });
-
-                hero.addEventListener('mouseleave', () => {
-                    video.pause();
-                });
+            hero.addEventListener('mouseleave', () => {
+                video.pause();
             });
         </script>
         {{content_boxes}} <!-- Librarians, Blog List, etc.-->
     </div>
-    <div id="page-footer">
-        <div id="default-page-footer">
+    <div id="site-footer">
+        <div id="default-footer">
             {{system_footer}}
         </div>
         {{public_footer}}
