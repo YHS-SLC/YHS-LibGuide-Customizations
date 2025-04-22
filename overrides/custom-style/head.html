@@ -140,7 +140,20 @@ LibGuides Custom Bootstrap:
     /* offset main content by the fixed position header's width */
     & #page-content { padding-top: 64px; }
   }
+  /* Guide Edit Styling */
+  body.s-lg-guide-body:has(header) {
+    padding-top: 60px;
+    font-size: medium;
+    & ul.nav {
 
+    }
+    & .s-lg-admin-guide-page-nav {
+      width: 100%;
+      & .nav {
+        flex-direction: row;
+      }
+    }
+  }
   /* Stop horizontal scrolling to whitespace on Chrome */
   /* Chrome 29+ */
   @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
@@ -435,6 +448,7 @@ LibGuides Custom Bootstrap:
               font-weight: 500;
               color: black;
               text-decoration-color: rgba(0, 0, 0, .33);
+              padding: 1px 0; /* Ensure there is no whitespace between wrapped lines */
 
               &:hover {
                 color: var(--brand-pink);

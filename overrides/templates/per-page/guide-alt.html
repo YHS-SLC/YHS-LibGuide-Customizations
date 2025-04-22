@@ -40,6 +40,34 @@
         </div>
         {{public_footer}}
     </div>
+    <style>
+        /* If guide only has one page, hide navigation */
+        .nav>li:only-child { 
+            display: none;
+        }
+
+        /* Hide "Date:" and "Subject" labels, it can be inferred from content. */
+        .s-lg-guide-label {
+            display: none;
+        }
+
+        /* Style the subject labels */
+        #s-lg-guide-header-subjects a {
+            color: var(--brand-green);
+            border-radius: 8px;
+            margin: 1px;
+            padding: 0 6px;
+            display: inline-block;
+            outline: solid 1px var(--brand-green-faded);
+            outline-offset: -1px;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--brand-white);
+                background: var(--brand-pink);
+            }
+        }
+    </style>
     <div id="default-libguide-utilities">
         <div id="s-lib-alert" title="">
             <div id="s-lib-alert-content"></div>
