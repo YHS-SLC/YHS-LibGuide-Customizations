@@ -31,6 +31,14 @@
             {{content}}
             {{page_prev_next_links}}
         </div>
+        <script> /* Remove feature character from displayed title */
+            $(window).on('load', function () {
+                title = jQuery('#s-lg-guide-name').text()
+                if (title.charAt(0) == "*" || title.charAt(0) == "!") {
+                    jQuery('#s-lg-guide-name').text(title.substring(1));
+                }
+            });
+        </script>
     </div>
     <div id="site-footer">
         <div id="default-footer" class="s-lib-footer footer container s-lib-side-borders">
@@ -39,36 +47,6 @@
         </div>
         {{public_footer}}
     </div>
-    <style>
-        /* Hide "Date:" and "Subject" labels, it can be inferred from content. */
-        .s-lg-guide-label {
-            display: none;
-        }
-        #s-lg-guide-desc-container {
-            display: inline-flex;
-            flex-wrap: wrap;
-            & #s-lg-guide-header-updated {
-                padding: 2px 6px;
-            }
-            /* Style the subject labels */
-            & #s-lg-guide-header-subjects a {
-                color: var(--brand-green);
-                border-radius: 8px;
-                margin: 1px;
-                padding: 0 6px;
-                display: inline-block;
-                outline: solid 1px var(--brand-green-faded);
-                outline-offset: -1px;
-                text-decoration: none;
-                &:hover {
-                    color: var(--brand-white);
-                    background: var(--brand-pink);
-                }
-            }
-        }
-        
-    </style>
-
     <div id="default-libguide-utilities">
         <div id="s-lib-alert" title="">
             <div id="s-lib-alert-content"></div>
