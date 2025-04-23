@@ -13,9 +13,12 @@ LibGuides Custom Bootstrap:
 -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    var element = '<link rel="stylesheet" href="https://static-assets-ca.libguides.com/web/css3.14.3/lg-public.min.css">'
+    var element
     if (window.location.pathname.indexOf("admin") == -1) {
       element = '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"> \<\/script>';
+    } else {
+      element = '<link rel="stylesheet" href="https://static-assets-ca.libguides.com/web/css3.14.3/lg-public.min.css">'
+      $('#s-lib-bc').show();
     }
     $('head').append(element);
   });
@@ -595,17 +598,19 @@ LibGuides Custom Bootstrap:
       width: 25%;
       flex: 1 0 auto;
       min-width: 230px;
-
+      
       & #filter-heading {
         display: inline-flex;
         justify-content: space-between;
         width: 100%;
         padding-bottom: 8px;
+        cursor: default;
 
         & button {
           color: var(--brand-green);
           background-color: var(--brand-yellow);
           border: none;
+          cursor: pointer;
 
           &:hover {
             color: var(--brand-white);
@@ -621,7 +626,7 @@ LibGuides Custom Bootstrap:
         border-radius: 0;
         border-width: 1px 0 0 0;
       }
-
+      
       & .input-group button {
         color: black;
         border-radius: 0;
@@ -636,6 +641,7 @@ LibGuides Custom Bootstrap:
       }
 
       & li {
+        cursor: pointer;
         list-style-type: none;
       }
 
@@ -678,6 +684,7 @@ LibGuides Custom Bootstrap:
 
       & select {
         z-index: 1;
+        cursor: pointer;
       }
 
       & option:active,
@@ -762,15 +769,18 @@ LibGuides Custom Bootstrap:
   }
 
   /* Guide Page Styling */
-  .guide {
+
+  /* Remove tiny box title - Phillip's request (Don't removed it from editor) */
+  .guide .s-lib-box-title {
+    display: none;
+  }
+
+  .guide, #s-lg-guide-main, .cke_editable_themed  {
+    font-family: var(--bs-body-font-family);
+
     /* Guide Tabs - remove underline */
     & #s-lg-tabs-container .nav-tabs>li>a {
       text-decoration: none;
-    }
-
-    /* Remove tiny box title - Phillip's request */
-    & .s-lib-box-title {
-      display: none;
     }
 
     /* Reformat google embeds to display properly. */
@@ -784,14 +794,14 @@ LibGuides Custom Bootstrap:
     }
 
     /* Guide Header */
-    #s-lg-guide-header {
+    & #s-lg-guide-header {
             padding-top: 64px;
             /* Hide "Date:" and "Subject" labels, it can be inferred from content. */
             & .s-lg-guide-label {
                 display: none;
             }
             /* title */
-            #s-lg-guide-name {
+            & #s-lg-guide-name {
                 font-size: 36px;
                 color: var(--brand-green);
             }
@@ -817,12 +827,48 @@ LibGuides Custom Bootstrap:
                 }
             }
         }
-    h4 {
+      & #s-lg-tabs-container .nav-tabs {
+        overflow-y: hidden;
+        padding: 3px 3px 0px 3px;
+        & a {
+          background: white;
+          outline: solid 1px var(--brand-green-faded);
+          color: black;
+          padding-bottom: 24px;
+
+          &.active {
+            background: var(--brand-green);
+            color:white;
+            pointer-events: none;
+          }
+        }
+      }
+    & #s-lg-guide-main {
+      padding: 0;
+    }
+    & h3, & h4 {
+      padding: 4px;
       width: 100%;
       display: inline-block;
+    }
+    & h3 {
       color: var(--brand-green);
       border: 6px var(--brand-yellow);
       border-style: double none;
+    }
+    & h4 {
+      padding-left: 24px;
+      border-bottom: double 6px var(--brand-pink);
+    }
+
+    & small {
+      color: #a9a9a9;
+      & a {
+        color: #6699ff;
+      }
+    }
+    & strong {
+      font-weight: bold;
     }
   }
 
