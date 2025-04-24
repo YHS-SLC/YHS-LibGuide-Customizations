@@ -9,8 +9,8 @@
                     <h2>
                         Filter Resources
                     </h2>
-                    <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" type="button"]
-                        onclick="springSpace.azList.reset();">Clear</button>
+                    <button id="resource-reset" class="btn btn-default btn-sm s-lib-hide" style="display: none;"
+                        type="button" ] onclick="springSpace.azList.reset();">Clear</button>
                 </div>
                 <nav>
                     <li>
@@ -19,24 +19,25 @@
                                 <label class="control-label sr-only" for="s-lg-az-search">
                                     DATABASES
                                 </label>
-    
+
                                 <div class="input-group">
-                                    <input type="text" class="s-lg-az-search form-control" aria-label="Search for Databases"
-                                        placeholder="By Search" maxlength="260">
+                                    <input type="text" class="s-lg-az-search form-control"
+                                        aria-label="Search for Databases" placeholder="By Search" maxlength="260">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default btn-outline-secondary" type="submit" aria-label="Go">
+                                        <button class="btn btn-default btn-outline-secondary" type="submit"
+                                            aria-label="Go">
                                             Go
                                         </button>
                                     </span>
                                 </div>
                             </div>
                         </form>
-    
+
                     </li>
                     <li class="dropdown">
                         <a class="nav-item dropdown-toggle" data-toggle="dropdown">By Subject</a>
-                        <select size="8" id="s-lg-sel-subjects" class="col-subjects dropdown-menu" name="s-lg-sel-subjects"
-                            class="s-lg-sel-subjects form-control"
+                        <select size="8" id="s-lg-sel-subjects" class="col-subjects dropdown-menu"
+                            name="s-lg-sel-subjects" class="s-lg-sel-subjects form-control"
                             onchange="springSpace.publicObj.filterAzBySubject(jQuery(this).val(), 26075);">
                         </select>
                     </li>
@@ -73,11 +74,11 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
         <script> // Dropdown toggles
             $(document).ready(function () {
                 $("[data-toggle='dropdown']").click(function (e) { /* Open/Close Dropdown when clicked */
-                    $(this).parents(".dropdown").toggleClass("open");  
+                    $(this).parents(".dropdown").toggleClass("open");
                     e.stopPropagation();
                 });
             });
@@ -86,13 +87,13 @@
             document.addEventListener('DOMContentLoaded', function () {
                 const ele = document.getElementById('s-lg-az-popular');
                 ele.style.cursor = 'grab';
-    
+
                 let pos = { top: 0, left: 0, x: 0, y: 0 };
-    
+
                 const mouseDownHandler = function (e) {
                     ele.style.cursor = 'grabbing';
                     ele.style.userSelect = 'none';
-    
+
                     pos = {
                         left: ele.scrollLeft,
                         top: ele.scrollTop,
@@ -100,29 +101,29 @@
                         x: e.clientX,
                         y: e.clientY,
                     };
-    
+
                     document.addEventListener('mousemove', mouseMoveHandler);
                     document.addEventListener('mouseup', mouseUpHandler);
                 };
-    
+
                 const mouseMoveHandler = function (e) {
                     // How far the mouse has been moved
                     const dx = e.clientX - pos.x;
                     const dy = e.clientY - pos.y;
-    
+
                     // Scroll the element
                     ele.scrollTop = pos.top - dy;
                     ele.scrollLeft = pos.left - dx;
                 };
-    
+
                 const mouseUpHandler = function () {
                     ele.style.cursor = 'grab';
                     ele.style.removeProperty('user-select');
-    
+
                     document.removeEventListener('mousemove', mouseMoveHandler);
                     document.removeEventListener('mouseup', mouseUpHandler);
                 };
-    
+
                 // Attach the handler
                 ele.addEventListener('mousedown', mouseDownHandler);
             });
@@ -143,7 +144,7 @@
             <span class="text-info">
                 <strong>title</strong>
             </span>
-    
+
             <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
                 &times;
             </button>
@@ -155,40 +156,59 @@
         <!-- !popover.twig -->
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            /*prependImages();*/
-        });
+        var isUpdating = false
         const observeUrlChange = () => {
-        let oldHref = document.location.href;
-        const body = document.querySelector('body');
-        const observer = new MutationObserver(mutations => {
-            console.log("Mutated! Updating images.");
-            /* Update featured images 
-            prependImages();*/
-
-            /* Hide/show featured resources */
-            var is_filtered = $("#s-lg-az-result-count").text().includes("for")
-            if (is_filtered) { $("#featured-resource-list").hide(); }
-            else { $("#featured-resource-list").show(); }
-        });
-        observer.observe(body, { childList: true, subtree: true });
+            const body = document.querySelector('body');
+            const observer = new MutationObserver(mutation => handleMutation());
+            observer.observe(body, { childList: true, subtree: true });
         };
 
-        function prependImages(){
-            var image_array = []
-            $(".s-lg-az-result a").each(function (i, elem) {
-                var title = $(this).text().trim();
-                var imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + title.replace(/( |\/|\"|\')/g, "_") + ".jpg"
-                var image = `<img class="resource-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="48"height="48">`
-                image_array.push(image)
-            });
-            $(".s-lg-az-result:not(:has(.resource-card-image))").each(function (i, elem) {
-                $(this).prepend(image_array[i])
-            });
+        async function handleMutation() {
+            if (!isUpdating) {
+                isUpdating = true
+                /* Ensure all elements have an empty image to target */
+                $(".s-lg-az-result:not(:has(.resource-card-image))").each(function (i, elem) {
+                    $(this).prepend(`<img class="resource-card-image">`)
+                });
+
+                /* Grab featured images */
+                var image_array = []
+                $(".s-lg-az-result a").each(function (i, elem) {
+                    var title = $(this).text().trim();
+                    var imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + title.replace(/( |\/|\"|\'|\’|\&|\(|\))/g, "_") + ".jpg"
+                    var image = `<img class="resource-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.width=0;" alt="" width="48"height="48">`
+                    image_array.push(image)
+                });
+
+                /* Push images to all targets */
+                $(".resource-card-image").each(function (i, elem) {
+                    $(this).replaceWith(image_array[i])
+                });
+
+                /* Hide/show featured resources */
+                var is_filtered = $("#s-lg-az-result-count").text().includes("for")
+                if (is_filtered) {
+                    $("#featured-resource-list").hide();
+                    $("#resource-reset").show();
+                } else {
+                    $("#featured-resource-list").show();
+                    $("#resource-reset").hide();
+                }
+                /* Relabel Databases found > Resources found */
+                $("#s-lg-az-result-count").text($("#s-lg-az-result-count").text().replace("Database", "Resource"));
+                
+                await new Promise(r => setTimeout(r, 20));
+                isUpdating = false
+            }
         }
         window.onload = observeUrlChange;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(handleMutation(), 200);
+        });
     </script>
-    <!-- <style>
+    <!--
+    <style>
         #featured-resource-list .s-lg-az-result-title {
             display: inline-block;
             text-align: center;
@@ -208,5 +228,6 @@
         .resource-card-image {
             object-fit: cover;
         }
-    </style> -->
+    </style> 
+    -->
 </body>
