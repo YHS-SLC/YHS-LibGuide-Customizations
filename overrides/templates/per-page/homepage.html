@@ -56,8 +56,8 @@
                     setTimeout(function () {
                         console.log("looping...")
                         /* If results have loaded, and first append was successful, continue. Otherwise trigger another loop. */
-                        if (appendCards("*", ".s-lib-box-idx-guide-list .s-lg-gtitle.s-lib-color-lt-grey", "#featured-assignments")) {
-                            appendCards("!", ".s-lib-box-idx-guide-list .s-lg-gtitle.s-lib-color-lt-grey", "#featured-guides")
+                        if (appendCards("*", ".s-lib-box-idx-guide-list .s-lg-gtitle.s-lib-color-lt-grey", "button", "#featured-assignments")) {
+                            appendCards("!", ".s-lib-box-idx-guide-list .s-lg-gtitle.s-lib-color-lt-grey", "button", "#featured-guides")
                             return;
                         }
                         else if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0

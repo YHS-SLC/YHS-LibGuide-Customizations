@@ -168,6 +168,87 @@
         margin: auto;
       }
     }
+    
+    & .carousel-card {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 auto;
+      padding: 8px;
+      border: 1px solid var(--brand-green-faded);
+      border-radius: 8px;
+      color: var(--brand-green);
+      box-shadow: 0px 2px 2px var(--brand-green-faded);
+
+      & .carousel-card-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+      }
+
+      & .carousel-card-title {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--brand-black);
+        line-height: 140%;
+        padding: 8px 0px;
+        font-family: var(--bs-body-font-family);
+
+        & a {
+          font-size: 16px;
+          font-weight: 500;
+          color: black;
+          text-decoration-color: rgba(0, 0, 0, .33);
+          padding: 1px 0;
+          /* Ensure there is no whitespace between wrapped lines */
+
+          &:hover {
+            color: var(--brand-pink);
+          }
+        }
+      }
+
+      /*Metadata*/
+      & .pad-bottom-sm {
+        margin-top: auto;
+
+        /*Subject Link*/
+        & .clearfix div a {
+          color: var(--brand-green);
+          border-radius: 8px;
+          margin: 1px;
+          padding: 0 6px;
+          display: inline-block;
+          outline: solid 1px var(--brand-green-faded);
+          outline-offset: -1px;
+          text-decoration: none;
+
+          &:hover {
+            color: var(--brand-white);
+            background: var(--brand-pink);
+          }
+        }
+
+        /*Views Label*/
+        & .pad-left-med:after {
+          content: "view(s)";
+        }
+        /*Hide Author, Default Link, Tags & Close Button*/
+        /* Author */
+        &>div>div:nth-of-type(2), 
+        /* Date & Views */
+        &>.clearfix:nth-of-type(1),
+        /* Tags */
+        &>.clearfix:nth-of-type(2),
+        /* Labels for "Subjects:" and "Tags:" */
+        &>.clearfix span,
+        /* "Go to Guide" default button */
+        &>div:has(button)
+        {
+          display: none;
+        }
+        
+      }
+    }
   }
 
   /* Guide Edit Styling */
@@ -463,89 +544,17 @@
         border-style: none solid;
         padding: 16px;
 
+        /* See Global definitions under Body for majority of ".carousel-card" styling */
         & .carousel-card {
-          display: flex;
-          flex-direction: column;
-          flex: 0 0 auto;
-          padding: 8px;
-          border: 1px solid var(--brand-green-faded);
-          border-radius: 8px;
           width: 240px;
-          color: var(--brand-green);
-          box-shadow: 0px 2px 2px var(--brand-green-faded);
 
-          & .carousel-card-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-          }
-
-          & .carousel-card-title {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--brand-black);
-            line-height: 140%;
-            padding: 8px 0px;
-            font-family: var(--bs-body-font-family);
-
-            & a {
-              font-size: 16px;
-              font-weight: 500;
-              color: black;
-              text-decoration-color: rgba(0, 0, 0, .33);
-              padding: 1px 0;
-              /* Ensure there is no whitespace between wrapped lines */
-
-              &:hover {
-                color: var(--brand-pink);
-              }
-            }
-          }
-
-          /*Metadata*/
-          & .pad-bottom-sm {
-            margin-top: auto;
-          }
-
-          /*Views Label*/
-          & .pad-left-med:after {
-            content: "view(s)";
-          }
-
-          /*Subject Link*/
-          & .clearfix div a {
-            color: var(--brand-green);
-            border-radius: 8px;
-            margin: 1px;
-            padding: 0 6px;
-            display: inline-block;
-            outline: solid 1px var(--brand-green-faded);
-            outline-offset: -1px;
-            text-decoration: none;
-
-            &:hover {
-              color: var(--brand-white);
-              background: var(--brand-pink);
-            }
-          }
-
-          /*Hide Button, Tags, Close Button & Author*/
-          &>div>div:nth-of-type(1),
-          /* Description & Author */
-          &>div>div:nth-last-of-type(1),
-          /* Link to page */
-          & .s-lib-color-lt-grey,
-          /* Date Modifed */
-          & .clearfix span
-
-          /* Line Prefixes */
-            {
+          /* Hide Description on homepage */
+          &>div>div:nth-of-type(1)>div:nth-of-type(1)
+          {
             display: none;
           }
         }
       }
-
-
     }
 
     & #homepage-resource-hero {
@@ -1024,13 +1033,17 @@
     #s-lib-public-main>div:has(a) {
       display: block;
     }
+
+    &.carousel-card {
+      margin: 16px 0;
+    }
   }
 </style>
+
 <script> // Scrape default guide display, and add them to featured carousel sections.
-  function appendCards(titleSelector, inputElementSelector, outputElementSelector) {
+  function appendCards(titleSelector, inputElementSelector, inputPHPSelector, outputElementSelector) {
     // 1. iterate over default "all guides" list sorted by recency, selecting items starting with "titleSelector" character
     output = $(inputElementSelector)
-    console.log(output)
 
     if (titleSelector != "") {
       output = output.filter(function (index) {
@@ -1039,19 +1052,19 @@
     }
 
     if (output.length == 0) {
-      console.log("No pages matched queries! Check if titles have been marked with selector: '", titleSelector, "'.")
+      console.log("No pages matched selector: '", titleSelector, "'.")
       return false;
     }
 
-    // 2. Extract "more information" links from each item
+    // 2. Extract links to resource from each item
     var titleList = Array(output.length)
     output.find('a').each(function (i, value) {
       titleList[i] = $(this).text().replace(/(\r\n|\n|\r)/gm, "").replace(/\s+/g, ' ');
     });
 
-    // 3. Extract php requests from each link. (button or fa-info-circle)
+    // 3. Extract php requests from each item.
     var phpList = Array(titleList.length)
-    output.find('button').each(function (i, value) {
+    output.find(inputPHPSelector).each(function (i, value) {
       phpList[i] = $(this).attr('data-ajload');
     });
 
@@ -1079,8 +1092,6 @@
           id_regular_expression = /\.com\/(?:(?:c\.php\?g=([0-9]+))|(.+))/g /* Select the guide's default id from the url, if does not have a custom url assigned. */
           guide_id = id_regular_expression.exec(link).filter(Boolean)[1].replace("/", "_");
           imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + guide_id + ".jpg"
-          console.log(imageSource)
-          console.log(guide_id)
           image = `<img draggable='false' class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
           title = "<h3 class='carousel-card-title'><a draggable='false' target='_blank' href='" + link + "'>" + titleList[index].substring(1) + "</a></h3>"
 

@@ -6,28 +6,8 @@
             <h1 id="s-lib-public-header-title">{{page_title}}</h1>
             <div id="s-lib-public-header-desc">{{page_description}}</div>
         </div>
-        <div id="s-lib-public-nav" class="container s-lib-side-borders">
-            {{page_nav}}
-        </div>
-        <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-            <section aria-label="Subject Search Bar">
-                <div id="s-lg-sb-search-bar" class="row">
-                    <div id="sb-search-col-1" class="col-md-12 center">
-                        {{navbar}}
-                    </div>
-                </div>
-            </section>
-            <section aria-label="Content by Subject">
-                <div id="s-lg-sb-cols" class="row">
-                    <div id="col1" class="col-md-8 center">
-    
-                    </div>
-                    <div id="col2" class="col-md-4 center">
-                        <div style="padding-top: 9px;"></div>
-                        {{content_box_search}}
-                    </div>
-                </div>
-            </section>
+        <div class="container">
+            {{navbar}}
         </div>
     </div>
     <div id="site-footer">
@@ -45,7 +25,7 @@
             <span class="text-info">
                 <strong>title</strong>
             </span>
-    
+
             <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">
                 &times;
             </button>

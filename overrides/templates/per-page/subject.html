@@ -9,7 +9,7 @@
             {{page_nav}}
         </div>
         <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders" tabindex="-1">
-            <div id="s-lg-sb-guides">
+            <div id="s-lg-sb-guides" style="display: none !important;">
                 <div id="s-lg-sb-content-guides"></div>
             </div>
             <div id="s-lg-sb-databases">
@@ -20,7 +20,6 @@
         <script defer>  // Remove special char prefix from title display
             document.addEventListener('DOMContentLoaded', function () {
                 jQuery('.s-lg-gtitle a').each(function (i, obj) {
-                    console.log("AA")
                     var title = $(this).text()
                     if (title.charAt(0) == "*" || title.charAt(0) == "!") {
                         $(this).text(title.substring(1));
@@ -30,11 +29,8 @@
             $(window).on('load', function () {
                 (function myLoop(i) {
                     setTimeout(function () {
-                        console.log("looping...")
-                        if (trimTitle()) { /* If results have loaded, and successfully trimmed, fancy re-format. */
-                            appendCards("", "#s-lg-sb-content-guides", "#card-target")
-                            return; 
-                        }
+                        /* If results have loaded, and first append was successful, continue. Otherwise trigger another loop. */
+                        if (appendCards("", "#s-lg-sb-content-guides .s-lg-gtitle", ".fa-info-circle", "#card-target")) { return; }
                         else if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0
                     }, 20)
                 })(10);                   //  pass the number of iterations as an argument
