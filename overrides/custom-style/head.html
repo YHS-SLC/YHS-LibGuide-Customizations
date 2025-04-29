@@ -377,6 +377,8 @@ LibGuides Custom Bootstrap:
         & h1 {
           font-weight: 600;
           font-size: min(24px, 5.75vw);
+          height: 28.8px;
+          /* Keep spacing even if text is empty. */
         }
 
         & h2 {
@@ -632,12 +634,13 @@ LibGuides Custom Bootstrap:
     /* Relabel "Featured Databases" > "Featured Resources" */
     & .s-lib-public-side-header h2.pad-bottom-sm {
       font-size: 0px;
+
       &::after {
         content: "Featured Resources";
         font-size: 32px;
       }
     }
-    
+
     & .container {
       display: flex;
       flex-wrap: wrap;
@@ -743,10 +746,12 @@ LibGuides Custom Bootstrap:
           }
 
           & #s-lg-sel-subjects {
+
             /* Hide the empty parent "Subject" filter */
             & option[value="139197"] {
               display: none;
             }
+
             /* Hide the prefixing "Subject: " for subject filters*/
             & option[value]:not([value=""]) {
               overflow: hidden;
@@ -777,7 +782,7 @@ LibGuides Custom Bootstrap:
           color: black;
           text-decoration-color: rgba(0, 0, 0, .33);
           padding: 0 10px;
-          
+
           &:hover {
             color: var(--brand-pink);
             text-decoration: none;
@@ -831,6 +836,7 @@ LibGuides Custom Bootstrap:
     & #featured-resource-list .s-lg-az-result-badges,
     & #resource-filter .navbar-header,
     & h3.s-lg-db-panel-title
+
     /* Alphabetical Result Container Title */
       {
       display: none !important;
@@ -839,7 +845,7 @@ LibGuides Custom Bootstrap:
 
   /* Guide Page Styling */
 
-  /* Remove tiny box title - Phillip's request (Don't removed it from editor) */
+  /* Remove tiny box title - Phillip's request (Don't remove it from editor) */
   .guide .s-lib-box-title {
     display: none;
   }
@@ -904,19 +910,38 @@ LibGuides Custom Bootstrap:
     }
 
     & #s-lg-tabs-container .nav-tabs {
-      overflow-y: hidden;
       padding: 3px 3px 0px 3px;
 
       & a {
         background: white;
-        outline: solid 1px var(--brand-green-faded);
         color: black;
-        padding-bottom: 24px;
+        float: none;
 
         &.active {
           background: var(--brand-green);
           color: white;
           pointer-events: none;
+        }
+        &:not(.active):hover {
+          background-color: var(--brand-pink);
+          color: white;
+        }
+      }
+
+      /* Standard Tab */
+      &>li>a {
+        outline: solid 1px var(--brand-green-faded);
+        padding-bottom: 24px;
+      }
+      
+      /* Dropdown Sublist Tab */
+      &>li>ul {
+        overflow: hidden;
+
+        & a {
+          white-space: nowrap;
+          margin: 4px;
+          display: block;
         }
       }
     }
