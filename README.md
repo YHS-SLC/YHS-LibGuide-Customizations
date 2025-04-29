@@ -50,6 +50,8 @@
     - Profile
     - A-Z Guide Browser
 - Can edit CSS & JS: Site-wide, or embed in per-page `<style>` & `<script>` tags
+- The Site-wide navigation (header.html) cannot autopopulate, and must be manually specified. The required data (links, titles & tags) are not available on every page, and cannot be saved anywhere.
+	- It might be possible to fake the API call SpringShare uses to populate the default homepage... but it's more trouble than it's worth.
 # Design Notes
 - [Our Figma Project](https://www.figma.com/design/sTxIk3kZhqVAVE7eAGqGH3/SLC?node-id=1-9384&t=Tm2fjONQBzFeh19G-0)
 - https://library.rrc.ca/home
