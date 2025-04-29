@@ -15,8 +15,9 @@
             <div id="s-lg-sb-databases">
                 <div id="s-lg-sb-content-databases"></div>
             </div>
+            <div id="card-target"></div>
         </div>
-        <script>  // Remove special char prefix from title display
+        <script defer>  // Remove special char prefix from title display
             document.addEventListener('DOMContentLoaded', function () {
                 jQuery('.s-lg-gtitle a').each(function (i, obj) {
                     console.log("AA")
@@ -30,7 +31,10 @@
                 (function myLoop(i) {
                     setTimeout(function () {
                         console.log("looping...")
-                        if (trimTitle()) { return; }
+                        if (trimTitle()) { /* If results have loaded, and successfully trimmed, fancy re-format. */
+                            appendCards("", "#s-lg-sb-content-guides", "#card-target")
+                            return; 
+                        }
                         else if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0
                     }, 20)
                 })(10);                   //  pass the number of iterations as an argument
@@ -46,6 +50,7 @@
                     return foundContent
                 }
             });
+        </script>
         </script>
     </div>
     <div id="site-footer">
