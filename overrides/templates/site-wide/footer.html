@@ -30,7 +30,7 @@
     </div>
     <div id="external-links">
         <a href="https://www.yorkhouse.ca/" target="_blank" class="navbar-logo-link">
-            <img height="128" class="yhs-logo"
+            <img class="yhs-logo"
                 src="https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/YHS-Rose-Lock-Up-Square-Gold-White-RGB.png"
                 alt="YHS Square Logo Lock-Up">
         </a>
@@ -65,27 +65,25 @@
             </a>
         </nav>
     </div>
-    <form id="help-form" action="https://docs.google.com/forms/.../formResponse">
+    <form id="help-form" method="POST" target="dummyframe" action="https://docs.google.com/forms/d/e/1FAIpQLSdPOEaLxfht1ap8IFeZdl_YmqDv2H2p9whpmCyyCQBBoDenJw/formResponse?embedded=true">
+        <!--Using: https://dev.to/ninest/natively-embed-google-forms-in-your-website-57g3-->
         <h2>Have a Question?</h2>
-        <input placeholder="YourEmail@yorkhouse.ca" type="text"
-            pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" 
-            name="entry.000000"
+        <input placeholder="YourEmail@yorkhouse.ca" type="email"
+            name="entry.1941148987"
             required>
         <div>
             <textarea placeholder="What is the tallest building in the world?" 
-            name="entry.000001"
+            name="entry.2135211842"
             required></textarea>
-            <input type="submit" value="Submit">
+            <button type="submit"></button>
         </div>
+        <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
     </form>
 </div>
 <nav class="site-nav">
     <dl class="nav-item">
         <dt>Resources</dt>
         <dd><a target="_blank" href="/az.php">All Resources</a></dd>
-        <dd>
-            <hr class="dropdown-divider">
-        </dd>
         <dd><a target="_blank" href="/resources/catalogue">Our Catalogue</a></dd>
         <dd><a target="_blank" href="/resources/sora">Sora E-Books</a></dd>
         <dd><a target="_blank" href="/orders">Request A Title</a></dd>
@@ -98,9 +96,6 @@
     <dl class="nav-item">
         <dt>How To</dt>
         <dd><a target="_blank" href="/how-to">All "How To" Guides</a></dd>
-        <dd>
-            <hr class="dropdown-divider">
-        </dd>
         <dd><a target="_blank" href="/how-to/assess-reliability">Assess Reliability</a></dd>
         <dd><a target="_blank" href="/how-to/research-sources">Searching for Sources</a></dd>
         <dd><a target="_blank" href="/how-to/find-your-book">Find Your Next Book</a></dd>
@@ -109,14 +104,8 @@
     <dl class="nav-item">
         <dt>Collections</dt>
         <dd><a target="_blank" href="/collections">All Collections</a></dd>
-        <dd>
-            <hr class="dropdown-divider">
-        </dd>
         <dd><a target="_blank" href="/collections/reading-lists">Reading Lists</a></dd>
         <dd><a target="_blank" href="/collections/publications">Student Publications</a></dd>
-        <dd>
-            <hr class="dropdown-divider">
-        </dd>
         <dd><a target="_blank" href="/collections/anti-islamophobia">Anti Islamophobia</a></dd>
         <dd><a target="_blank" href="/collections/asian-heritage">Asian Heritage</a></dd>
         <dd><a target="_blank" href="/collections/black-history">Black History</a></dd>
@@ -127,18 +116,12 @@
     <dl class="nav-item">
         <dt>Collaboration</dt>
         <dd><a target="_blank" href="/collaboration">All Collaboration</a></dd>
-        <dd>
-            <hr class="dropdown-divider">
-        </dd>
         <dd><a target="_blank" href="/collaboration/2025-25">2024-25 (Current)</a></dd>
         <dd><a target="_blank" href="/collaboration/2023-24">2023-24</a></dd>
     </dl>
     <dl class="nav-item">
         <dt>Student Initiatives</dt>
         <dd><a target="_blank" href="/initiatives">All Initiatives</a></dd>
-        <dd>
-            <hr class="dropdown-divider">
-        </dd>
         <dd><a target="_blank" href="/initiatives/publications">Student Publications</a></dd>
         <dd><a target="_blank" href="/initiatives/model-un">Model UN</a></dd>
     </dl>
@@ -148,4 +131,4 @@
         <dd><a id="admin-login-link" target="_blank" href="https://yorkhouse.libapps.com/libapps/login.php?site_id=26075&target64=L2xpYmd1aWRlcy9hZG1pbl9jLnBocD9nPTc0MzcxMyZwPTUzNzcxMjA=">Admin Login</a></dd>
     </dl>
 </nav>
-<span>Powered by Springshare. All rights reserved.</span>
+<span id="default-disclaimer">Powered by Springshare. All rights reserved.</span>

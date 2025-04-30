@@ -38,7 +38,9 @@
 
   /* Site-wide Styling */
   body {
-    padding: 0;
+    padding: 0;      
+    overflow-x: hidden;
+
 
     /* Apply header fonts */
     & h1,
@@ -95,27 +97,26 @@
       top: 0;
       z-index: 5;
       background-color: var(--brand-green);
+      padding: 8px;
 
-      & .navbar-brand {
-        /* Place logo & text side by side */
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
+      & #navbar-home-link,
+      & #navbar-search {
+        width: 160px;
       }
 
-      & .yhs-logo {
-        /* Scale Brand Logo */
-        height: 3rem;
-      }
-
-      & .navbar-home-link {
+      & #navbar-home-link {
         /* Style Brand Text */
         font-size: .7rem;
         line-height: .7rem;
         font-weight: 400;
         text-transform: uppercase;
         text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        & svg {
+          height: 56px;
+        }
       }
 
       & .navbar-toggler-icon {
@@ -125,13 +126,10 @@
       & .dropdown-menu {
         background-color: var(--brand-green);
       }
+
     }
 
     & .site-nav {
-      & .yhs-logo:hover {
-        filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
-      }
-
       & a,
       & span {
         color: white;
@@ -143,6 +141,9 @@
           color: var(--brand-pink);
           background-color: var(--brand-green);
           text-shadow: 1px 0 0 var(--brand-pink);
+          & #yhs-logo {
+            filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
+          }
         }
       }
 
@@ -153,11 +154,14 @@
           color: var(--brand-green-faded);
         }
       }
+      .dropdown-divider {
+        border-top: 1px solid white;
+      }
     }
 
     /* offset main content by the fixed position header's width */
     & #page-content {
-      padding-top: 64px;
+      padding-top: 72px;
     }
 
     /* Make Cookies modal more visible - Phillip's Request */
@@ -256,7 +260,7 @@
     & #site-footer {
       background: var(--brand-green);
       color: white;
-      
+      margin-top: 128px;
       & #general-info,
       & .site-nav {
         display: flex;
@@ -271,7 +275,7 @@
       & #general-info>*{
         min-width: 400px;      
         flex: 1 0 33%;
-        height: 250px;
+        min-height: 250px;
         display: flex;
         flex-direction: column;
         & h2 {
@@ -286,6 +290,8 @@
         display: flex;
         white-space: nowrap;
         justify-content: space-between;
+        gap: 8px;
+
         & img {   
           object-fit: cover;
           width: 50%;
@@ -298,18 +304,28 @@
       }
 
       & #external-links {
-        & img {
-          display: block;
-          margin: auto;
+        gap: 8px;
+
+        & .navbar-logo-link{
+          display: flex;
+          
+          & .yhs-logo {               
+            margin: auto auto 0 auto;
+            height: 64px;
+          }
+        }
+        &>nav {
+          display: flex;
+          justify-content: center;
+          gap: 8px
         }
       }
 
       & #help-form {
-        visibility: hidden;
         &>* {
           width: 100%;
         }
-        input[type="text"],
+        input[type="email"],
         textarea {
           color: var(--brand-green-faded);
         }
@@ -319,13 +335,19 @@
             flex: 1;
           }
         }
+        & button {
+          &:after {
+            content:"Submit";
+          }
+          
+        }
       }
 
-      & #external-links>nav {
-        display: flex;
-        justify-content: center;
+      & .site-nav dt {
+        padding: 32px 0;
       }
-      & span {
+      
+      & #default-disclaimer {
         display: block;
         text-align: center;
       }
@@ -362,17 +384,24 @@
     }
   }
 
-  /* Stop horizontal scrolling to whitespace on Chrome */
-  /* Chrome 29+ */
-  @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    body {
-      overflow-x: hidden;
-    }
-  }
-
   /* Responsive Site Header */
-  @media (min-width: 1200px) {
+  @media (min-width: 961px) {
     #site-header {
+      & #collapsing-navigation {
+        display: flex !important;
+        flex-basis: auto;
+      }
+      & .navbar-toggler {
+        display: none;
+      }
+
+      .navbar-nav .nav-link {
+        padding-right: var(--bs-navbar-nav-link-padding-x);
+        padding-left: var(--bs-navbar-nav-link-padding-x);
+      }
+      .navbar-nav .dropdown-menu {
+        position: absolute;
+      }
       & .dropdown:hover .dropdown-menu {
         display: block;
         margin-top: 0;
@@ -573,7 +602,7 @@
     }
 
     & .feature-section {
-      padding: 16px;
+      padding: 32px 0;
       max-width: 1200px;
       margin: auto;
 
@@ -646,7 +675,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap-reverse;
-      padding: 8px;
+      padding: 32px 0;
       gap: 8px;
 
 
