@@ -330,6 +330,10 @@
         text-align: center;
       }
     }
+    #default-footer,
+    #s-lib-footer-login-link {
+      display: none;
+    }
   }
 
   /* Guide Edit Styling */
@@ -1197,4 +1201,11 @@
 
     return true
   }
+</script>
+<script defer> // Scrape admin login link
+  $(window).on('load', function () {
+    link = $("#s-lib-footer-login-link a").attr('href')
+    console.log()
+    $("#admin-login-link").attr('href', link);
+  });
 </script>
