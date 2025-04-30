@@ -104,13 +104,9 @@
         gap: 1rem;
       }
 
-      & .navbar-brand-logo {
+      & .yhs-logo {
         /* Scale Brand Logo */
         height: 3rem;
-
-        &:hover {
-          filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
-        }
       }
 
       & .navbar-home-link {
@@ -129,10 +125,17 @@
       & .dropdown-menu {
         background-color: var(--brand-green);
       }
+    }
+
+    & .site-nav {
+      & .yhs-logo:hover {
+        filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
+      }
 
       & a,
       & span {
         color: white;
+        text-decoration: none;
 
         &:active,
         &:focus,
@@ -247,6 +250,84 @@
           display: none;
         }
         
+      }
+    }
+
+    & #site-footer {
+      background: var(--brand-green);
+      color: white;
+      
+      & #general-info,
+      & .site-nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        &>* {
+          padding: 16px;
+        }
+      }
+      
+      & #general-info>*{
+        min-width: 400px;      
+        flex: 1 0 33%;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        & h2 {
+          text-align: center;
+        }
+        &>* {
+          flex-grow: 1;
+        }
+      }
+
+      & #hours-and-map>div {
+        display: flex;
+        white-space: nowrap;
+        justify-content: space-between;
+        & img {   
+          object-fit: cover;
+          width: 50%;
+          height: 100%;
+        }
+        & th {
+          text-align: right;
+          padding-right: .75em;
+        }
+      }
+
+      & #external-links {
+        & img {
+          display: block;
+          margin: auto;
+        }
+      }
+
+      & #help-form {
+        visibility: hidden;
+        &>* {
+          width: 100%;
+        }
+        input[type="text"],
+        textarea {
+          color: var(--brand-green-faded);
+        }
+        & div {
+          display: flex;
+          & textarea {
+            flex: 1;
+          }
+        }
+      }
+
+      & #external-links>nav {
+        display: flex;
+        justify-content: center;
+      }
+      & span {
+        display: block;
+        text-align: center;
       }
     }
   }
@@ -1034,7 +1115,7 @@
       display: block;
     }
 
-    &.carousel-card {
+    & .carousel-card {
       margin: 16px 0;
     }
   }
