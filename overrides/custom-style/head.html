@@ -90,6 +90,27 @@
       }
     }
 
+    /* Style multicolour img/svg buttons using sepia to force all to a single hue. */
+    & .logo-link {               
+      &:active,
+      &:focus,
+      &:hover {
+        & img,
+        & svg {filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
+        }
+      }
+    }
+    & input,
+    & textarea {
+      &:not(:focus):hover {
+        color: var(--brand-pink) !important;
+        &::placeholder {
+        color: var(--brand-pink) !important;
+        }
+      }
+    }
+
+
     /* Site Header Styling */
     & #site-header {
       position: fixed;
@@ -141,9 +162,6 @@
           color: var(--brand-pink);
           background-color: var(--brand-green);
           text-shadow: 1px 0 0 var(--brand-pink);
-          & #yhs-logo {
-            filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
-          }
         }
       }
 
@@ -158,6 +176,7 @@
         border-top: 1px solid white;
       }
     }
+
 
     /* offset main content by the fixed position header's width */
     & #page-content {
@@ -281,9 +300,6 @@
         & h2 {
           text-align: center;
         }
-        &>* {
-          flex-grow: 1;
-        }
       }
 
       & #hours-and-map>div {
@@ -305,14 +321,19 @@
 
       & #external-links {
         gap: 8px;
-
-        & .navbar-logo-link{
+        &>* {
+          flex-grow: 1;
+        }
+        & .logo-link{
           display: flex;
           
-          & .yhs-logo {               
+          & svg {               
             margin: auto auto 0 auto;
             height: 64px;
           }
+        }
+        & .external-media-icon:hover svg {
+          fill: var(--brand-pink);
         }
         &>nav {
           display: flex;
@@ -333,13 +354,46 @@
           display: flex;
           & textarea {
             flex: 1;
+            min-height: 100px;
+            height: 100px;
           }
         }
         & button {
-          &:after {
+          border: none;
+          border-radius: 0 4px 4px 0;
+          text-transform: uppercase;
+          color: var(--brand-green);
+          background-color: var(--brand-yellow);
+          width: 100px;
+          height: 100px;
+
+          &:hover {
+            color: white;
+            background-color: var(--brand-pink);
+          }
+          &:focus:after {
+            content:"✓";
+            font-size: xx-large;
+          }
+          &:not(:focus):after {
             content:"Submit";
           }
           
+        }
+        &:has(:focus) {
+          & input:not(:placeholder-shown),
+          & textarea:not(:placeholder-shown){
+            &:invalid {background-color: #ffdddd;}
+            &:valid {background-color: #ddffdd;}
+          }
+          & form{
+            & :invalid {
+              border: 5px solid #ffdddd;
+            }
+            & :valid {
+              border: 5px solid #ddffdd;
+            }
+          }
         }
       }
 
@@ -352,6 +406,7 @@
         text-align: center;
       }
     }
+    
     #default-footer,
     #s-lib-footer-login-link {
       display: none;
