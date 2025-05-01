@@ -38,7 +38,7 @@
 
   /* Site-wide Styling */
   body {
-    padding: 0;      
+    padding: 0;
     overflow-x: hidden;
 
 
@@ -91,21 +91,33 @@
     }
 
     /* Style multicolour img/svg buttons using sepia to force all to a single hue. */
-    & .logo-link {               
+    & .logo-link {
+      & .cls-1 {
+        fill: white;
+      }
+
+      & .cls-2 {
+        fill: var(--brand-yellow);
+      }
+
       &:active,
       &:focus,
       &:hover {
+
         & img,
-        & svg {filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
+        & svg {
+          filter: contrast(0.8) brightness(.7) sepia(1) hue-rotate(230deg) saturate(8);
         }
       }
     }
+
     & input,
     & textarea {
       &:not(:focus):hover {
         color: var(--brand-pink) !important;
+
         &::placeholder {
-        color: var(--brand-pink) !important;
+          color: var(--brand-pink) !important;
         }
       }
     }
@@ -135,6 +147,7 @@
         display: flex;
         align-items: center;
         gap: 16px;
+
         & svg {
           height: 56px;
         }
@@ -151,6 +164,7 @@
     }
 
     & .site-nav {
+
       & a,
       & span {
         color: white;
@@ -172,6 +186,7 @@
           color: var(--brand-green-faded);
         }
       }
+
       .dropdown-divider {
         border-top: 1px solid white;
       }
@@ -194,7 +209,7 @@
         margin: auto;
       }
     }
-    
+
     & .carousel-card {
       display: flex;
       flex-direction: column;
@@ -258,9 +273,10 @@
         & .pad-left-med:after {
           content: "view(s)";
         }
+
         /*Hide Author, Default Link, Tags & Close Button*/
         /* Author */
-        &>div>div:nth-of-type(2), 
+        &>div>div:nth-of-type(2),
         /* Date & Views */
         &>.clearfix:nth-of-type(1),
         /* Tags */
@@ -268,11 +284,10 @@
         /* Labels for "Subjects:" and "Tags:" */
         &>.clearfix span,
         /* "Go to Guide" default button */
-        &>div:has(button)
-        {
+        &>div:has(button) {
           display: none;
         }
-        
+
       }
     }
 
@@ -280,23 +295,26 @@
       background: var(--brand-green);
       color: white;
       margin-top: 128px;
+
       & #general-info,
       & .site-nav {
         display: flex;
         width: 100%;
         justify-content: space-around;
         flex-wrap: wrap;
+
         &>* {
           padding: 16px;
         }
       }
-      
-      & #general-info>*{
-        min-width: 400px;      
+
+      & #general-info>* {
+        min-width: 400px;
         flex: 1 0 33%;
         min-height: 250px;
         display: flex;
         flex-direction: column;
+
         & h2 {
           text-align: center;
         }
@@ -308,11 +326,12 @@
         justify-content: space-between;
         gap: 8px;
 
-        & img {   
+        & img {
           object-fit: cover;
           width: 50%;
           height: 100%;
         }
+
         & th {
           text-align: right;
           padding-right: .75em;
@@ -321,20 +340,24 @@
 
       & #external-links {
         gap: 8px;
+
         &>* {
           flex-grow: 1;
         }
-        & .logo-link{
+
+        & .logo-link {
           display: flex;
-          
-          & svg {               
+
+          & svg {
             margin: auto auto 0 auto;
             height: 64px;
           }
         }
+
         & .external-media-icon:hover svg {
           fill: var(--brand-pink);
         }
+
         &>nav {
           display: flex;
           justify-content: center;
@@ -346,18 +369,22 @@
         &>* {
           width: 100%;
         }
+
         input[type="email"],
         textarea {
           color: var(--brand-green-faded);
         }
+
         & div {
           display: flex;
+
           & textarea {
             flex: 1;
             min-height: 100px;
             height: 100px;
           }
         }
+
         & button {
           border: none;
           border-radius: 0 4px 4px 0;
@@ -371,25 +398,36 @@
             color: white;
             background-color: var(--brand-pink);
           }
+
           &:focus:after {
-            content:"✓";
+            content: "✓";
             font-size: xx-large;
           }
+
           &:not(:focus):after {
-            content:"Submit";
+            content: "Submit";
           }
-          
+
         }
+
         &:has(:focus) {
+
           & input:not(:placeholder-shown),
-          & textarea:not(:placeholder-shown){
-            &:invalid {background-color: #ffdddd;}
-            &:valid {background-color: #ddffdd;}
+          & textarea:not(:placeholder-shown) {
+            &:invalid {
+              background-color: #ffdddd;
+            }
+
+            &:valid {
+              background-color: #ddffdd;
+            }
           }
-          & form{
+
+          & form {
             & :invalid {
               border: 5px solid #ffdddd;
             }
+
             & :valid {
               border: 5px solid #ddffdd;
             }
@@ -400,13 +438,13 @@
       & .site-nav dt {
         padding: 32px 0;
       }
-      
+
       & #default-disclaimer {
         display: block;
         text-align: center;
       }
     }
-    
+
     #default-footer,
     #s-lib-footer-login-link {
       display: none;
@@ -446,6 +484,7 @@
         display: flex !important;
         flex-basis: auto;
       }
+
       & .navbar-toggler {
         display: none;
       }
@@ -454,9 +493,11 @@
         padding-right: var(--bs-navbar-nav-link-padding-x);
         padding-left: var(--bs-navbar-nav-link-padding-x);
       }
+
       .navbar-nav .dropdown-menu {
         position: absolute;
       }
+
       & .dropdown:hover .dropdown-menu {
         display: block;
         margin-top: 0;
@@ -718,8 +759,7 @@
           width: 240px;
 
           /* Hide Description on homepage */
-          &>div>div:nth-of-type(1)>div:nth-of-type(1)
-          {
+          &>div>div:nth-of-type(1)>div:nth-of-type(1) {
             display: none;
           }
         }
