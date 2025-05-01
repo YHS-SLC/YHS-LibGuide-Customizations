@@ -6,7 +6,7 @@
         }
     </script>
     {{public_header}}
-    <div id="page-content" class="homepage">
+    <div id="homepage" class="page-content">
         <div id="page-navigation-bar">{{page_nav}}</div>
         <div id="s-lg-index-list" style="display:none">
             <!-- Need content to be inside a div with this ID. It breaks otherwise. -->
@@ -152,12 +152,8 @@
         </script>
         {{content_boxes}} <!-- Librarians, Blog List, etc.-->
     </div>
-    <div id="site-footer">
-        {{public_footer}}
-        <div id="default-footer">
-            {{system_footer}}
-        </div>
-    </div>
+    {{public_footer}}
+    <div id="default-footer" style="display: none;"> {{system_footer}} </div>
     <div id="default-libguide-utilities">
         <div id="s-lib-alert" title="">
             <div id="s-lib-alert-content"></div>

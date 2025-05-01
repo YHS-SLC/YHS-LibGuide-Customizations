@@ -2,7 +2,7 @@
     {{skip_link}}
     {{ADMIN_CMD_BAR}}
     {{public_header}}
-    <div id="page-content" class="guide">
+    <div id="guide" class="page-content">
         <div id="s-lg-guide-header" class="container s-lib-header s-lib-side-borders">
             <div id="s-lg-guide-header-info">
                 <h1 id="s-lg-guide-name">{{guide_title}}</h1>
@@ -40,17 +40,8 @@
             });
         </script>
     </div>
-    <div id="site-footer">
-        {{public_footer}}
-        <div id="s-lib-footer-login-link">
-            {{login_url_display}}
-        </div>
-    </div>
-    <style>
-        #help-form {
-            visibility: visible !important;
-        }
-    </style>
+    {{public_footer}}
+    <div id="s-lib-footer-login-link" style="display: none;">{{login_url_display}}</div>
     <div id="default-libguide-utilities">
         <div id="s-lib-alert" title="">
             <div id="s-lib-alert-content"></div>

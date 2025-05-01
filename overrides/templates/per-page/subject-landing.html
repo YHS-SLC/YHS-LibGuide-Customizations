@@ -1,7 +1,7 @@
 <body class="s-lib-public-body">
     {{skip_link}}
     {{public_header}}
-    <div id="page-content" class="subject-landing">
+    <div id="subject-landing" class="page-content">
         <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
             <h1 id="s-lib-public-header-title">{{page_title}}</h1>
             <div id="s-lib-public-header-desc">{{page_description}}</div>
@@ -10,12 +10,8 @@
             {{navbar}}
         </div>
     </div>
-    <div id="site-footer">
-        {{public_footer}}
-        <div id="default-footer">
-            {{system_footer}}
-        </div>
-    </div>
+    {{public_footer}}
+    <div id="default-footer" style="display: none;"> {{system_footer}} </div>
     <div id="default-libguide-utilities">
         <div id="s-lib-alert" title="">
             <div id="s-lib-alert-content"></div>
