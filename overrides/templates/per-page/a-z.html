@@ -174,8 +174,9 @@
             }
             window.onload = observeUrlChange;
     
+            // Hotfix for images initially loading while full list has not, leaving full list blank.
             document.addEventListener('DOMContentLoaded', function () {
-                setTimeout(handleMutation(), 200);
+                setTimeout(handleMutation, 500);
             });
         </script>
     </div>

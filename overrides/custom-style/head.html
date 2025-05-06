@@ -328,7 +328,7 @@
         & img {
           object-fit: cover;
           width: 50%;
-          height: 100%;
+          object-position: 0% 20%;
         }
 
         & th {
@@ -1047,11 +1047,6 @@
 
   /* Guide Page Styling */
 
-  /* Remove tiny box title - Phillip's request (Don't remove it from editor) */
-  #guide .s-lib-box-title {
-    display: none;
-  }
-
   #guide,
   #s-lg-guide-main,
   .cke_editable_themed {
@@ -1149,6 +1144,11 @@
       }
     }
 
+    /* Remove tiny box title - Phillip's request */
+    .s-lib-box-title {
+      display: none;
+    }
+
     & #s-lg-guide-main {
       padding: 0;
     }
@@ -1204,7 +1204,9 @@
         }
       }
     }
-
+    & .s-lib-box-title {
+      display: block !important;
+    }
     & a {
       text-decoration: none;
     }
@@ -1275,7 +1277,7 @@
     // 2. Extract links to resource from each item
     var titleList = Array(output.length)
     output.find('a').each(function (i, value) {
-      titleList[i] = $(this).text().replace(/(\r\n|\n|\r)/gm, "").replace(/\s+/g, ' ');
+      titleList[i] = $(this).text().replace(/(\r\n|\n|\r|^!|^\*)/gm, "").replace(/\s+/g, ' ');
     });
 
     // 3. Extract php requests from each item.
@@ -1309,7 +1311,7 @@
           guide_id = id_regular_expression.exec(link).filter(Boolean)[1].replace("/", "_");
           imageSource = "https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/" + guide_id + ".jpg"
           image = `<img draggable='false' class="carousel-card-image" src="` + imageSource + `" onerror="this.onerror=null; this.src='https://d1qywhc7l90rsa.cloudfront.net/customers/10289/images/Default_Featured.jpg'" alt="" width="222"height="148">`
-          title = "<h3 class='carousel-card-title'><a draggable='false' target='_blank' href='" + link + "'>" + titleList[index].substring(1) + "</a></h3>"
+          title = "<h3 class='carousel-card-title'><a draggable='false' target='_blank' href='" + link + "'>" + titleList[index] + "</a></h3>"
 
           /* Style Tags & make links open in new tab*/
           removeDelinator = cutHeader.replace(/<\/a>,/g, '</a>') /* Remove commas seperating each subject */
@@ -1337,7 +1339,6 @@
 <script defer> // Scrape admin login link
   $(window).on('load', function () {
     link = $("#s-lib-footer-login-link a").attr('href')
-    console.log()
     $("#admin-login-link").attr('href', link);
   });
 </script>
