@@ -37,6 +37,13 @@
                 if (title.charAt(0) == "*" || title.charAt(0) == "!") {
                     jQuery('#s-lg-guide-name').text(title.substring(1));
                 }
+                /* Fix tabbed box (bootstrap 4 > 5)*/
+                $('[data-toggle="tab"]').each(function() {
+                    this.setAttribute('data-bs-toggle', 'tab');
+                });
+                $(".tab-pane.active").addClass("show");
+                $(".s-lib-jqtabs ul li:nth-of-type(1)").removeClass("active");
+                $(".s-lib-jqtabs ul li:nth-of-type(1) a").addClass("active");
             });
         </script>
     </div>    

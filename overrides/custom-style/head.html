@@ -1078,19 +1078,23 @@
         }
       }
     }
-
-    & #s-lg-tabs-container .nav-tabs {
+    
+    & #s-lg-tabs-container .nav-tabs,
+    & .s-lib-jqtabs .nav-tabs {
       padding: 3px 3px 0px 3px;
+      overflow: hidden;
 
       & a {
+        padding: 3px 3px 0px 3px;
         background: white;
         color: black;
         float: none;
-
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        
         &.active {
           background: var(--brand-green);
           color: white;
-          pointer-events: none;
         }
 
         &:not(.active):hover {
@@ -1116,7 +1120,10 @@
         }
       }
     }
+    & .s-lib-jqtabs .nav-tabs { 
+      height: 48px; 
 
+    }
     /* Remove tiny box title - Phillip's request */
     .s-lib-box-title {
       display: none;
